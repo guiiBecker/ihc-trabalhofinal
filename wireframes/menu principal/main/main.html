@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Main Menu Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .wireframe { border: 2px solid #333; padding: 20px; background: #f5f5f5; }
+        .section { margin: 10px 0; padding: 10px; border: 1px dashed #666; }
+        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .menu-card { border: 2px solid #8B5CF6; padding: 15px; background: white; border-radius: 10px; text-align: center; }
+        .card-icon { font-size: 2em; margin-bottom: 10px; }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 15px 0; }
+        .stat-card { border: 1px solid #ddd; padding: 10px; background: white; border-radius: 8px; display: flex; align-items: center; gap: 10px; }
+    </style>
+</head>
+<body>
+    <div class="wireframe">
+        <h1>WIREFRAME - MAIN MENU GAME</h1>
+        
+        <div class="section">
+            <h2>Seção de Boas-vindas</h2>
+            <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #e0e7ff, #f3e8ff); border-radius: 10px;">
+                <h2>Bem-vindo de volta, João!</h2>
+                <p>Pronto para mais uma aventura educacional?</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Grid de Menu Principal (3x2)</h2>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="card-icon">▶️</div>
+                    <h3>Novo Jogo</h3>
+                    <p>Inicie uma nova partida e teste seus conhecimentos</p>
+                    <div>⚡ Energia: 5/5</div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="card-icon">🎓</div>
+                    <h3>Ranking Aluno</h3>
+                    <p>Veja sua posição entre todos os estudantes</p>
+                    <div>🏅 15º Posição</div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="card-icon">🏫</div>
+                    <h3>Ranking Escola</h3>
+                    <p>Compare sua escola com outras instituições</p>
+                    <div>🏆 3º Lugar</div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="card-icon">📖</div>
+                    <h3>Regras</h3>
+                    <p>Aprenda como jogar e maximize seus pontos</p>
+                    <div>ℹ️ Guia Completo</div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="card-icon">🏆</div>
+                    <h3>Conquistas</h3>
+                    <p>Veja seus badges e conquistas desbloqueadas</p>
+                    <div>⭐ 8/15 Badges</div>
+                </div>
+                
+                <div class="menu-card">
+                    <div class="card-icon">⚙️</div>
+                    <h3>Perfil</h3>
+                    <p>Gerencie suas informações e configurações</p>
+                    <div>✏️ Editar Dados</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Estatísticas Rápidas (4 cards horizontais)</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div>🎮</div>
+                    <div>
+                        <h4>42</h4>
+                        <p>Jogos Jogados</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div>📊</div>
+                    <div>
+                        <h4>76%</h4>
+                        <p>Taxa de Acerto</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div>⏱️</div>
+                    <div>
+                        <h4>15s</h4>
+                        <p>Tempo Médio</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div>🔥</div>
+                    <div>
+                        <h4>7</h4>
+                        <p>Sequência Atual</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Interações dos Cards</h2>
+            <ul>
+                <li><strong>Novo Jogo:</strong> Vai para seleção de série (showGradeSelection)</li>
+                <li><strong>Rankings:</strong> Abrem modais com listas de classificação</li>
+                <li><strong>Regras:</strong> Abre modal com instruções do jogo</li>
+                <li><strong>Conquistas:</strong> Mostra badges e progresso</li>
+                <li><strong>Perfil:</strong> Configurações e edição de dados</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

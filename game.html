@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="theme-color" content="#8B5CF6">
+    <title>PortGO - Jogar</title>
+    <link rel="stylesheet" href="css/game.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header do Jogo -->
+        <header class="game-header">
+            <div class="logo">
+                <img src="assets/Unijui.png" alt="UNIJUÍ" class="unijui-logo-img">
+                <h1>PortGO</h1>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-details">
+                    <span class="user-name">João Silva</span>
+                    <span class="user-level">Nível 5</span>
+                </div>
+                <div class="user-stats">
+                    <div class="stat">
+                        <i class="fas fa-star"></i>
+                        <span>1,250 pts</span>
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-trophy"></i>
+                        <span>15º lugar</span>
+                    </div>
+                </div>
+                <button class="logout-btn" onclick="logout()">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenuGame()">
+                <i class="fas fa-bars"></i>
+            </button>
+        </header>
+
+        <!-- Menu Principal -->
+        <main class="game-main" id="mainMenu">
+            <div class="welcome-section">
+                <h2>Bem-vindo de volta, João!</h2>
+                <p>Pronto para mais uma aventura educacional?</p>
+            </div>
+
+            <div class="menu-grid">
+                <!-- Novo Jogo -->
+                <div class="menu-card" onclick="showGradeSelection()">
+                    <div class="card-icon">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <h3>Novo Jogo</h3>
+                    <p>Inicie uma nova partida e teste seus conhecimentos</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-bolt"></i> Energia: 5/5</span>
+                    </div>
+                </div>
+
+                <!-- Ranking Aluno -->
+                <div class="menu-card" onclick="showRanking('student')">
+                    <div class="card-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Ranking Aluno</h3>
+                    <p>Veja sua posição entre todos os estudantes</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-medal"></i> 15º Posição</span>
+                    </div>
+                </div>
+
+                <!-- Ranking Escola -->
+                <div class="menu-card" onclick="showRanking('school')">
+                    <div class="card-icon">
+                        <i class="fas fa-school"></i>
+                    </div>
+                    <h3>Ranking Escola</h3>
+                    <p>Compare sua escola com outras instituições</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-trophy"></i> 3º Lugar</span>
+                    </div>
+                </div>
+
+                <!-- Regras -->
+                <div class="menu-card" onclick="showRules()">
+                    <div class="card-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <h3>Regras</h3>
+                    <p>Aprenda como jogar e maximize seus pontos</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-info-circle"></i> Guia Completo</span>
+                    </div>
+                </div>
+
+                <!-- Conquistas -->
+                <div class="menu-card" onclick="showAchievements()">
+                    <div class="card-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Conquistas</h3>
+                    <p>Veja seus badges e conquistas desbloqueadas</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-star"></i> 8/15 Badges</span>
+                    </div>
+                </div>
+
+                <!-- Perfil -->
+                <div class="menu-card" onclick="showProfile()">
+                    <div class="card-icon">
+                        <i class="fas fa-cog"></i>
+                    </div>
+                    <h3>Perfil</h3>
+                    <p>Gerencie suas informações e configurações</p>
+                    <div class="card-stats">
+                        <span><i class="fas fa-edit"></i> Editar Dados</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Estatísticas Rápidas -->
+            <div class="quick-stats">
+                <div class="stat-card">
+                    <i class="fas fa-gamepad"></i>
+                    <div>
+                        <h4>42</h4>
+                        <p>Jogos Jogados</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-percentage"></i>
+                    <div>
+                        <h4>76%</h4>
+                        <p>Taxa de Acerto</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <h4>15s</h4>
+                        <p>Tempo Médio</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-fire"></i>
+                    <div>
+                        <h4>7</h4>
+                        <p>Sequência Atual</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Seleção de Série -->
+        <section class="grade-selection" id="gradeSelection" style="display: none;">
+            <div class="grade-header">
+                <button class="back-btn" onclick="showMainMenu()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2>Escolha a Série</h2>
+                <p>Selecione a série do ensino médio</p>
+            </div>
+
+            <div class="grades-grid">
+                <div class="grade-card first-year" onclick="showLevelSelection('1ano')">
+                    <div class="grade-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Ensino Médio - 1º Ano</h3>
+                    <p>Conteúdo básico e introdutório</p>
+                    <div class="grade-info">
+                        <span><i class="fas fa-book"></i> Fundamentos</span>
+                        <span><i class="fas fa-star"></i> Nível Iniciante</span>
+                    </div>
+                </div>
+
+                <div class="grade-card second-year" onclick="showLevelSelection('2ano')">
+                    <div class="grade-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Ensino Médio - 2º Ano</h3>
+                    <p>Conteúdo intermediário</p>
+                    <div class="grade-info">
+                        <span><i class="fas fa-book-open"></i> Intermediário</span>
+                        <span><i class="fas fa-star"></i> Nível Médio</span>
+                    </div>
+                </div>
+
+                <div class="grade-card third-year" onclick="showLevelSelection('3ano')">
+                    <div class="grade-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h3>Ensino Médio - 3º Ano</h3>
+                    <p>Preparação para vestibular</p>
+                    <div class="grade-info">
+                        <span><i class="fas fa-university"></i> Avançado</span>
+                        <span><i class="fas fa-star"></i> Nível Expert</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Seleção de Nível -->
+        <section class="level-selection" id="levelSelection" style="display: none;">
+            <div class="level-header">
+                <button class="back-btn" onclick="showGradeSelection()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                <h2>Escolha o Nível</h2>
+                <p>Selecione a dificuldade que deseja jogar</p>
+            </div>
+
+            <div class="levels-grid">
+                <div class="level-card easy" onclick="startGame('easy')">
+                    <div class="level-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>Fácil</h3>
+                    <p>Perfeito para começar</p>
+                    <div class="level-info">
+                        <span>+10 pontos por acerto</span>
+                        <span>30 segundos por questão</span>
+                    </div>
+                </div>
+
+                <div class="level-card medium" onclick="startGame('medium')">
+                    <div class="level-icon">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3>Médio</h3>
+                    <p>Para quem quer um desafio</p>
+                    <div class="level-info">
+                        <span>+20 pontos por acerto</span>
+                        <span>20 segundos por questão</span>
+                    </div>
+                </div>
+
+                <div class="level-card hard" onclick="startGame('hard')">
+                    <div class="level-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+                    <h3>Difícil</h3>
+                    <p>Para os verdadeiros mestres</p>
+                    <div class="level-info">
+                        <span>+30 pontos por acerto</span>
+                        <span>15 segundos por questão</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Área de Jogo -->
+        <section class="game-area" id="gameArea" style="display: none;">
+            <div class="game-header-info">
+                <div class="game-progress">
+                    <span class="question-counter">Questão 1 de 10</span>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 10%"></div>
+                    </div>
+                </div>
+                <div class="game-timer">
+                    <i class="fas fa-clock"></i>
+                    <span id="timer">30</span>s
+                </div>
+                <div class="game-score">
+                    <i class="fas fa-star"></i>
+                    <span id="score">0</span> pts
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-card-game">
+                    <h3 id="questionText">Carregando questão...</h3>
+                    <div class="options-container" id="optionsContainer">
+                        <!-- As opções serão inseridas dinamicamente -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-controls">
+                <button class="help-btn" onclick="useHelp()">
+                    <i class="fas fa-lightbulb"></i>
+                    Dica (2)
+                </button>
+                <button class="swap-btn" onclick="swapQuestion()">
+                    <i class="fas fa-exchange-alt"></i>
+                    Trocar (1)
+                </button>
+                <button class="cards-btn" onclick="useCards()">
+                    <i class="fas fa-layer-group"></i>
+                    Cartas (1)
+                </button>
+                <button class="pause-btn" onclick="pauseGame()">
+                    <i class="fas fa-pause"></i>
+                    Pausar
+                </button>
+            </div>
+        </section>
+
+        <!-- Modal de Resultado -->
+        <div id="resultModal" class="modal">
+            <div class="modal-content result-modal">
+                <div class="result-header">
+                    <i class="fas fa-trophy"></i>
+                    <h2 id="resultTitle">Parabéns!</h2>
+                </div>
+                <div class="result-stats">
+                    <div class="result-stat">
+                        <span class="stat-label">Pontuação</span>
+                        <span class="stat-value" id="finalScore">0</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="stat-label">Acertos</span>
+                        <span class="stat-value" id="correctAnswers">0/10</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="stat-label">Tempo Total</span>
+                        <span class="stat-value" id="totalTime">0s</span>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button class="btn-primary" onclick="playAgain()">
+                        <i class="fas fa-redo"></i>
+                        Jogar Novamente
+                    </button>
+                    <button class="btn-secondary" onclick="goToMainMenu()">
+                        <i class="fas fa-home"></i>
+                        Menu Principal
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Ranking -->
+        <div id="rankingModal" class="modal">
+            <div class="modal-content ranking-modal">
+                <div class="modal-header">
+                    <h2 id="rankingTitle">Ranking</h2>
+                    <button class="close-btn" onclick="closeModal('rankingModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="ranking-list" id="rankingList">
+                    <!-- Lista de ranking será inserida dinamicamente -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de Regras -->
+        <div id="rulesModal" class="modal">
+            <div class="modal-content rules-modal">
+                <div class="modal-header">
+                    <h2>Como Jogar</h2>
+                    <button class="close-btn" onclick="closeModal('rulesModal')">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="rules-content">
+                    <div class="rule-section">
+                        <h3><i class="fas fa-play"></i> Jogabilidade</h3>
+                        <ul>
+                            <li>Responda 10 questões de múltipla escolha</li>
+                            <li>Cada questão tem um tempo limite</li>
+                            <li>Escolha a resposta clicando na opção correta</li>
+                        </ul>
+                    </div>
+                    <div class="rule-section">
+                        <h3><i class="fas fa-star"></i> Pontuação</h3>
+                        <ul>
+                            <li>Fácil: 10 pontos por acerto</li>
+                            <li>Médio: 20 pontos por acerto</li>
+                            <li>Difícil: 30 pontos por acerto</li>
+                            <li>Bonus por velocidade: até 5 pontos extras</li>
+                        </ul>
+                    </div>
+                    <div class="rule-section">
+                        <h3><i class="fas fa-clock"></i> Tempo</h3>
+                        <ul>
+                            <li>Fácil: 30 segundos por questão</li>
+                            <li>Médio: 20 segundos por questão</li>
+                            <li>Difícil: 15 segundos por questão</li>
+                        </ul>
+                    </div>
+                    <div class="rule-section">
+                        <h3><i class="fas fa-lightbulb"></i> Ajudas</h3>
+                        <ul>
+                            <li>Dica: Remove 2 opções incorretas</li>
+                            <li>Você começa com 3 dicas por jogo</li>
+                            <li>Use com sabedoria!</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- UNIJUÍ Info -->
+        <div class="unijui-footer">
+            <div class="unijui-info">
+                <div class="unijui-logo">
+                    <img src="assets/Unijui.png" alt="UNIJUÍ Logo" class="unijui-logo-img">
+                    <span>UNIJUÍ</span>
+                </div>
+                <div class="unijui-tooltip">
+                    <div class="tooltip-header">
+                        <img src="assets/Unijui.png" alt="UNIJUÍ Logo" class="tooltip-logo">
+                        <strong>Universidade Regional do Noroeste do Estado do Rio Grande do Sul</strong>
+                    </div>
+                    <div class="tooltip-content">
+                        <p><i class="fas fa-map-marker-alt"></i> Ijuí, Rio Grande do Sul</p>
+                        <p><i class="fas fa-graduation-cap"></i> Mais de 50 anos de excelência em educação</p>
+                        <p><i class="fas fa-users"></i> Formando profissionais qualificados para o mercado</p>
+                        <p><i class="fas fa-lightbulb"></i> Inovação e tecnologia em ensino superior</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/questions.js"></script>
+    <script>
+        let currentQuestion = 0;
+        let score = 0;
+        let timer;
+        let timeLeft = 30;
+        let gameLevel = 'easy';
+        let selectedGrade = '1ano';
+        let helpCount = 2;
+        let swapCount = 1;
+        let cardsCount = 1;
+        let gameQuestions = [];
+        let totalQuestions = 10;
+
+        function startGame(level) {
+            gameLevel = level;
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('levelSelection').style.display = 'none';
+            document.getElementById('gradeSelection').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'block';
+            
+            // Reseta o jogo
+            currentQuestion = 0;
+            score = 0;
+            document.getElementById('score').textContent = '0';
+            
+            // Cria um array de questões embaralhadas para o jogo
+            gameQuestions = [...questions].sort(() => 0.5 - Math.random()).slice(0, totalQuestions);
+            
+            // Reseta os contadores das ajudas
+            helpCount = 2;
+            swapCount = 1;
+            cardsCount = 1;
+            
+            // Reseta os botões
+            document.querySelector('.help-btn').innerHTML = '<i class="fas fa-lightbulb"></i> Dica (2)';
+            document.querySelector('.swap-btn').innerHTML = '<i class="fas fa-exchange-alt"></i> Trocar (1)';
+            document.querySelector('.cards-btn').innerHTML = '<i class="fas fa-layer-group"></i> Cartas (1)';
+            document.querySelector('.help-btn').disabled = false;
+            document.querySelector('.swap-btn').disabled = false;
+            document.querySelector('.cards-btn').disabled = false;
+            document.querySelector('.help-btn').style.opacity = '1';
+            document.querySelector('.swap-btn').style.opacity = '1';
+            document.querySelector('.cards-btn').style.opacity = '1';
+            
+            // Ajusta o tempo baseado no nível
+            timeLeft = level === 'easy' ? 30 : level === 'medium' ? 20 : 15;
+            
+            loadQuestion();
+        }
+
+        function loadQuestion() {
+            const question = gameQuestions[currentQuestion];
+            const questionContainer = document.querySelector('.question-card-game');
+            
+            // Limpa o conteúdo anterior
+            questionContainer.innerHTML = '';
+            
+            // Adiciona o texto de apoio se existir
+            if (question.supportText) {
+                const supportTextElement = document.createElement('div');
+                supportTextElement.className = 'support-text';
+                supportTextElement.textContent = question.supportText;
+                questionContainer.appendChild(supportTextElement);
+            }
+            
+            // Adiciona a pergunta
+            const questionElement = document.createElement('h3');
+            questionElement.id = 'questionText';
+            questionElement.textContent = question.question;
+            questionContainer.appendChild(questionElement);
+            
+            // Adiciona o container das opções
+            const optionsContainer = document.createElement('div');
+            optionsContainer.className = 'options-container';
+            optionsContainer.id = 'optionsContainer';
+            
+            question.options.forEach((option, index) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                optionElement.innerHTML = `
+                    <span class="option-letter">${String.fromCharCode(65 + index)}</span>
+                    <span class="option-text">${option}</span>
+                `;
+                optionElement.onclick = () => selectOption(index);
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            questionContainer.appendChild(optionsContainer);
+
+            // Atualiza o contador de questões
+            document.querySelector('.question-counter').textContent = `Questão ${currentQuestion + 1} de ${totalQuestions}`;
+            
+            // Atualiza a barra de progresso
+            const progress = ((currentQuestion + 1) / totalQuestions) * 100;
+            document.querySelector('.progress-fill').style.width = `${progress}%`;
+
+            startTimer();
+        }
+
+        function selectOption(selectedIndex) {
+            clearInterval(timer);
+            const question = gameQuestions[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            
+            // Primeiro, desabilita todas as opções
+            options.forEach(option => {
+                option.classList.add('disabled');
+            });
+
+            // Se o tempo acabou (selectedIndex = -1), apenas mostra a resposta correta
+            if (selectedIndex === -1) {
+                options[question.correct].classList.add('correct');
+            } else if (selectedIndex !== question.correct) {
+                // Se a resposta estiver errada, mostra a correta
+                options[selectedIndex].classList.add('wrong');
+                options[question.correct].classList.add('correct');
+            } else {
+                // Se a resposta estiver correta, apenas destaca ela em verde
+                options[selectedIndex].classList.add('correct');
+                // Pontuação baseada no nível
+                const points = gameLevel === 'easy' ? 10 : gameLevel === 'medium' ? 20 : 30;
+                score += points;
+                document.getElementById('score').textContent = score;
+            }
+
+            // Desabilita os botões de controle
+            document.querySelector('.help-btn').disabled = true;
+            document.querySelector('.swap-btn').disabled = true;
+            document.querySelector('.cards-btn').disabled = true;
+            document.querySelector('.pause-btn').disabled = true;
+
+            // Mostra o botão de próxima questão
+            setTimeout(() => {
+                if (currentQuestion < totalQuestions - 1) {
+                    currentQuestion++;
+                    loadQuestion();
+                    // Reabilita os botões se ainda tiverem usos disponíveis
+                    if (helpCount > 0) document.querySelector('.help-btn').disabled = false;
+                    if (swapCount > 0) document.querySelector('.swap-btn').disabled = false;
+                    if (cardsCount > 0) document.querySelector('.cards-btn').disabled = false;
+                    document.querySelector('.pause-btn').disabled = false;
+                } else {
+                    endGame();
+                }
+            }, 2000);
+        }
+
+        function startTimer() {
+            timeLeft = gameLevel === 'easy' ? 30 : gameLevel === 'medium' ? 20 : 15;
+            document.getElementById('timer').textContent = timeLeft;
+            
+            clearInterval(timer);
+            timer = setInterval(() => {
+                timeLeft--;
+                document.getElementById('timer').textContent = timeLeft;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    selectOption(-1);
+                }
+            }, 1000);
+        }
+
+        function endGame() {
+            alert(`Fim de jogo! Sua pontuação final foi: ${score}`);
+            // Reseta o jogo e volta para o menu principal
+            currentQuestion = 0;
+            score = 0;
+            helpCount = 2;
+            swapCount = 1;
+            cardsCount = 1;
+            document.getElementById('score').textContent = '0';
+            showMainMenu();
+        }
+
+        function useHelp() {
+            if (helpCount <= 0) {
+                alert('Você não tem mais dicas disponíveis!');
+                return;
+            }
+
+            const question = gameQuestions[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            let wrongOptions = [];
+            
+            // Encontra as opções incorretas
+            options.forEach((option, index) => {
+                if (index !== question.correct) {
+                    wrongOptions.push(index);
+                }
+            });
+
+            // Remove 2 opções incorretas aleatoriamente
+            const optionsToRemove = wrongOptions.sort(() => 0.5 - Math.random()).slice(0, 2);
+            
+            optionsToRemove.forEach(index => {
+                options[index].style.opacity = '0.3';
+                options[index].style.pointerEvents = 'none';
+                options[index].style.textDecoration = 'line-through';
+            });
+
+            helpCount--;
+            document.querySelector('.help-btn').innerHTML = `
+                <i class="fas fa-lightbulb"></i>
+                Dica (${helpCount})
+            `;
+
+            if (helpCount <= 0) {
+                document.querySelector('.help-btn').disabled = true;
+                document.querySelector('.help-btn').style.opacity = '0.5';
+            }
+        }
+
+        function swapQuestion() {
+            if (swapCount <= 0) {
+                alert('Você não tem mais trocas disponíveis!');
+                return;
+            }
+
+            // Encontra uma questão que não está sendo usada no jogo atual
+            let availableQuestions = questions.filter(q => 
+                !gameQuestions.some(gq => gq.question === q.question)
+            );
+            
+            if (availableQuestions.length === 0) {
+                // Se não há questões disponíveis, pega uma aleatória do pool original
+                availableQuestions = questions.filter(q => q.question !== gameQuestions[currentQuestion].question);
+            }
+            
+            if (availableQuestions.length > 0) {
+                // Seleciona uma questão aleatória das disponíveis
+                const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+                const newQuestion = availableQuestions[randomIndex];
+                
+                // Substitui a questão atual
+                gameQuestions[currentQuestion] = newQuestion;
+                
+                clearInterval(timer);
+                loadQuestion();
+            } else {
+                alert('Não há mais questões disponíveis para trocar!');
+                return;
+            }
+
+            swapCount--;
+            document.querySelector('.swap-btn').innerHTML = `
+                <i class="fas fa-exchange-alt"></i>
+                Trocar (${swapCount})
+            `;
+
+            if (swapCount <= 0) {
+                document.querySelector('.swap-btn').disabled = true;
+                document.querySelector('.swap-btn').style.opacity = '0.5';
+            }
+        }
+
+        function useCards() {
+            if (cardsCount <= 0) {
+                alert('Você não tem mais cartas disponíveis!');
+                return;
+            }
+
+            const question = gameQuestions[currentQuestion];
+            const options = document.querySelectorAll('.option');
+            let wrongOptions = [];
+            
+            // Encontra as opções incorretas
+            options.forEach((option, index) => {
+                if (index !== question.correct) {
+                    wrongOptions.push(index);
+                }
+            });
+
+            // Remove 3 opções incorretas aleatoriamente
+            const optionsToRemove = wrongOptions.sort(() => 0.5 - Math.random()).slice(0, 3);
+            
+            optionsToRemove.forEach(index => {
+                options[index].style.opacity = '0.3';
+                options[index].style.pointerEvents = 'none';
+                options[index].style.textDecoration = 'line-through';
+            });
+
+            cardsCount--;
+            document.querySelector('.cards-btn').innerHTML = `
+                <i class="fas fa-layer-group"></i>
+                Cartas (${cardsCount})
+            `;
+
+            if (cardsCount <= 0) {
+                document.querySelector('.cards-btn').disabled = true;
+                document.querySelector('.cards-btn').style.opacity = '0.5';
+            }
+        }
+
+        function pauseGame() {
+            clearInterval(timer);
+            alert('Jogo pausado! Clique em OK para continuar.');
+            startTimer();
+        }
+
+        function showMainMenu() {
+            document.getElementById('gameArea').style.display = 'none';
+            document.getElementById('levelSelection').style.display = 'none';
+            document.getElementById('gradeSelection').style.display = 'none';
+            document.getElementById('mainMenu').style.display = 'block';
+        }
+
+        function showGradeSelection() {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('levelSelection').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'none';
+            document.getElementById('gradeSelection').style.display = 'block';
+        }
+
+        function showLevelSelection(grade) {
+            selectedGrade = grade;
+            document.getElementById('mainMenu').style.display = 'none';
+            document.getElementById('gradeSelection').style.display = 'none';
+            document.getElementById('gameArea').style.display = 'none';
+            document.getElementById('levelSelection').style.display = 'block';
+        }
+
+        function logout() {
+            window.location.href = 'index.html';
+        }
+
+        function showRanking(type) {
+            const modal = document.getElementById('rankingModal');
+            const title = document.getElementById('rankingTitle');
+            const list = document.getElementById('rankingList');
+            
+            if (type === 'student') {
+                title.textContent = 'Ranking dos Alunos';
+                list.innerHTML = generateStudentRanking();
+            } else if (type === 'school') {
+                title.textContent = 'Ranking das Escolas';
+                list.innerHTML = generateSchoolRanking();
+            }
+            
+            modal.style.display = 'block';
+        }
+
+        function generateStudentRanking() {
+            const students = [
+                { name: 'Ana Silva', school: 'Colégio São José', score: 2850, position: 1 },
+                { name: 'João Santos', school: 'Escola Municipal Central', score: 2720, position: 2 },
+                { name: 'Maria Oliveira', school: 'Instituto Educacional', score: 2680, position: 3 },
+                { name: 'Pedro Costa', school: 'Colégio Estadual', score: 2590, position: 4 },
+                { name: 'Carla Ferreira', school: 'Escola Técnica', score: 2540, position: 5 },
+                { name: 'Lucas Pereira', school: 'Colégio Particular', score: 2480, position: 6 },
+                { name: 'Juliana Lima', school: 'Escola Rural', score: 2420, position: 7 },
+                { name: 'Rafael Souza', school: 'Instituto Federal', score: 2380, position: 8 },
+                { name: 'Fernanda Alves', school: 'Colégio Militar', score: 2340, position: 9 },
+                { name: 'Gabriel Rocha', school: 'Escola Adventista', score: 2300, position: 10 },
+                { name: 'Beatriz Martins', school: 'Colégio Dom Bosco', score: 2280, position: 11 },
+                { name: 'Thiago Barbosa', school: 'Escola Metodista', score: 2260, position: 12 },
+                { name: 'Amanda Ribeiro', school: 'Instituto Batista', score: 2240, position: 13 },
+                { name: 'Diego Nascimento', school: 'Colégio Franciscano', score: 2220, position: 14 },
+                { name: 'João Silva', school: 'UNIJUÍ - Escola Aplicação', score: 1250, position: 15 }
+            ];
+
+            return students.map(student => {
+                const positionClass = student.position === 1 ? 'gold' : 
+                                    student.position === 2 ? 'silver' : 
+                                    student.position === 3 ? 'bronze' : '';
+                const isCurrentUser = student.name === 'João Silva';
+                const currentClass = isCurrentUser ? ' current-user' : '';
+                
+                return `
+                    <div class="ranking-item${currentClass}">
+                        <div class="ranking-position ${positionClass}">
+                            ${student.position}º
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">${student.name}${isCurrentUser ? ' (Você)' : ''}</div>
+                            <div class="ranking-school">${student.school}</div>
+                        </div>
+                        <div class="ranking-score">${student.score} pts</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function generateSchoolRanking() {
+            const schools = [
+                { name: 'Instituto Federal', avgScore: 2650, students: 45, position: 1 },
+                { name: 'Colégio Militar', avgScore: 2580, students: 38, position: 2 },
+                { name: 'Colégio São José', avgScore: 2520, students: 52, position: 3 },
+                { name: 'Escola Técnica', avgScore: 2480, students: 41, position: 4 },
+                { name: 'Instituto Educacional', avgScore: 2440, students: 47, position: 5 },
+                { name: 'Colégio Particular', avgScore: 2400, students: 35, position: 6 },
+                { name: 'Escola Municipal Central', avgScore: 2360, students: 63, position: 7 },
+                { name: 'Colégio Dom Bosco', avgScore: 2320, students: 29, position: 8 },
+                { name: 'Escola Metodista', avgScore: 2280, students: 33, position: 9 },
+                { name: 'UNIJUÍ - Escola Aplicação', avgScore: 2240, students: 28, position: 10 }
+            ];
+
+            return schools.map(school => {
+                const positionClass = school.position === 1 ? 'gold' : 
+                                    school.position === 2 ? 'silver' : 
+                                    school.position === 3 ? 'bronze' : '';
+                const isCurrentSchool = school.name === 'UNIJUÍ - Escola Aplicação';
+                const currentClass = isCurrentSchool ? ' current-user' : '';
+                
+                return `
+                    <div class="ranking-item${currentClass}">
+                        <div class="ranking-position ${positionClass}">
+                            ${school.position}º
+                        </div>
+                        <div class="ranking-info">
+                            <div class="ranking-name">${school.name}${isCurrentSchool ? ' (Sua Escola)' : ''}</div>
+                            <div class="ranking-school">${school.students} estudantes ativos</div>
+                        </div>
+                        <div class="ranking-score">${school.avgScore} pts</div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function showRules() {
+            const modal = document.getElementById('rulesModal');
+            modal.style.display = 'block';
+        }
+
+        function showAchievements() {
+            alert('Sistema de conquistas em desenvolvimento!\nEm breve você poderá ver todos os seus badges e conquistas desbloqueadas.');
+        }
+
+        function showProfile() {
+            alert('Configurações de perfil em desenvolvimento!\nEm breve você poderá editar suas informações pessoais e preferências do jogo.');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.style.display = 'none';
+        }
+
+        // Fecha modal clicando fora dele
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html> 

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Main Index</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .wireframe { border: 2px solid #333; padding: 20px; background: #f5f5f5; }
+        .section { margin: 10px 0; padding: 10px; border: 1px dashed #666; }
+        .hero-layout { display: flex; gap: 20px; }
+        .game-preview { border: 2px solid #8B5CF6; padding: 15px; background: white; border-radius: 10px; }
+        .preview-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+        .option-row { margin: 5px 0; padding: 5px; background: #f0f0f0; border-radius: 5px; }
+        .correct { background: #90EE90 !important; }
+    </style>
+</head>
+<body>
+    <div class="wireframe">
+        <h1>WIREFRAME - MAIN INDEX (HERO SECTION)</h1>
+        
+        <div class="section">
+            <h2>Layout Principal - Hero Section</h2>
+            <div class="hero-layout">
+                <div style="flex: 1;">
+                    <h3>Lado Esquerdo - Texto</h3>
+                    <h2>Aprenda de forma <span style="background: linear-gradient(135deg, #8B5CF6, #EC4899); -webkit-background-clip: text; color: transparent;">divertida</span></h2>
+                    <p>Jogue, aprenda e compita com seus amigos em um ambiente gamificado!</p>
+                </div>
+                
+                <div style="flex: 1;">
+                    <h3>Lado Direito - Preview do Jogo</h3>
+                    <div class="game-preview">
+                        <div class="preview-header">
+                            <div>🎮 PortGO Quiz</div>
+                            <div>⏰ 30s</div>
+                        </div>
+                        <div>
+                            <h4>Assinale a alternativa em que todas as palavras estão corretamente acentuadas:</h4>
+                            <div class="option-row">A) último, vírus, álcool, álbum</div>
+                            <div class="option-row correct">B) último, vírus, álcool, álbum</div>
+                            <div class="option-row">C) ultimo, virus, alcool, album</div>
+                            <div class="option-row">D) último, virus, álcool, album</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Elementos do Hero</h2>
+            <ul>
+                <li>Título principal com texto gradiente "divertida"</li>
+                <li>Subtítulo explicativo sobre gamificação</li>
+                <li>Preview interativo do jogo mostrando uma questão real</li>
+                <li>Header do preview com ícone gamepad e timer</li>
+                <li>Opções de múltipla escolha com destaque na resposta correta</li>
+                <li>Wave SVG na parte inferior da seção</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

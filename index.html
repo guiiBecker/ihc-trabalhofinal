@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortGO - Aprenda Brincando</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>PortGO</span>
+            </div>
+            <button class="btn-login" onclick="showLoginModal()">
+                <i class="fas fa-sign-in-alt"></i>
+                Entrar
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Aprenda de forma <span class="gradient-text">divertida</span></h1>
+                    <p class="hero-description">Jogue, aprenda e compita com seus amigos em um ambiente gamificado!</p>
+                    <div class="hero-buttons">
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="game-preview">
+                        <div class="preview-header">
+                            <div class="preview-info">
+                                <i class="fas fa-gamepad"></i>
+                                <span>PortGO Quiz</span>
+                            </div>
+                            <div class="preview-timer">
+                                <i class="fas fa-clock"></i>
+                                <span>30s</span>
+                            </div>
+                        </div>
+                        <div class="preview-card">
+                            <div class="game-question">
+                                <h3>Assinale a alternativa em que todas as palavras estão corretamente acentuadas:</h3>
+                                <div class="game-options">
+                                    <div class="game-option">
+                                        <span class="option-letter">A</span>
+                                        <span class="option-text">último, vírus, álcool, álbum</span>
+                                    </div>
+                                    <div class="game-option correct">
+                                        <span class="option-letter">B</span>
+                                        <span class="option-text">último, vírus, álcool, álbum</span>
+                                    </div>
+                                    <div class="game-option">
+                                        <span class="option-letter">C</span>
+                                        <span class="option-text">ultimo, virus, alcool, album</span>
+                                    </div>
+                                    <div class="game-option">
+                                        <span class="option-letter">D</span>
+                                        <span class="option-text">último, virus, álcool, album</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-wave">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#ffffff" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,149.3C960,160,1056,160,1152,138.7C1248,117,1344,75,1392,53.3L1440,32L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <i class="fas fa-graduation-cap"></i>
+                        <span>PortGO</span>
+                    </div>
+                    <p>Transformando educação em diversão</p>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <a href="mailto:contato@portgo.com.br">
+                        <i class="fas fa-envelope"></i>
+                        contato@portgo.com.br
+                    </a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PortGO. Todos os direitos reservados.</p>
+                <div class="unijui-info">
+                    <img src="assets/Unijui.png" alt="UNIJUÍ Logo" class="unijui-logo">
+                    <span>UNIJUÍ</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal Login -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2>Bem-vindo de volta!</h2>
+                <p>Demonstração - Clique em "Entrar" para acessar o jogo!</p>
+            </div>
+            <form class="login-form">
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Seu e-mail (opcional)">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Sua senha (opcional)">
+                </div>
+                <button type="button" class="btn-modal-primary" onclick="window.location.href='game.html'">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Entrar
+                </button>
+                <div class="modal-divider">
+                    <span>ou</span>
+                </div>
+                <button type="button" class="btn-modal-secondary" onclick="showRegisterModal()">
+                    <i class="fas fa-user-plus"></i>
+                    Criar nova conta
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Cadastro -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <button class="close" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-header">
+                <h2>Criar Conta</h2>
+                <p>Demonstração - Clique em "Criar Conta" para acessar o jogo!</p>
+            </div>
+            <form class="register-form">
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Nome completo (opcional)">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Seu e-mail (opcional)">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" placeholder="Telefone (opcional)">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" placeholder="CPF (opcional)">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Criar senha (opcional)">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Repita a senha (opcional)">
+                </div>
+                <div class="input-group">
+                    <i class="fas fa-user-graduate"></i>
+                    <select>
+                        <option value="">Tipo de cadastro (opcional)</option>
+                        <option value="aluno">Aluno</option>
+                        <option value="professor">Professor</option>
+                    </select>
+                </div>
+                <button type="button" class="btn-modal-primary" onclick="window.location.href='game.html'">
+                    <i class="fas fa-user-plus"></i>
+                    Criar Conta
+                </button>
+                <div class="modal-divider">
+                    <span>ou</span>
+                </div>
+                <button type="button" class="btn-modal-secondary" onclick="showLoginModal()">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Já tenho uma conta
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html> 

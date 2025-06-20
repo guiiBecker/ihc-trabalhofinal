@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Header Game</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .wireframe { border: 2px solid #333; padding: 20px; background: #f5f5f5; }
+        .section { margin: 10px 0; padding: 10px; border: 1px dashed #666; }
+        .header-layout { display: flex; justify-content: space-between; align-items: center; }
+        .logo-section { display: flex; align-items: center; gap: 15px; }
+        .user-section { display: flex; align-items: center; gap: 15px; }
+        .user-avatar { width: 40px; height: 40px; background: #8B5CF6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; }
+        .stat-item { background: #e0e7ff; padding: 5px 10px; border-radius: 15px; margin: 0 5px; }
+        .logo-placeholder { width: 40px; height: 30px; background: #ddd; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="wireframe">
+        <h1>WIREFRAME - HEADER GAME</h1>
+        
+        <div class="section">
+            <h2>Layout do Header</h2>
+            <div class="header-layout">
+                <div class="logo-section">
+                    <div class="logo-placeholder"></div>
+                    <h2>PortGO</h2>
+                    <span>(Logo UNIJUÍ + Título)</span>
+                </div>
+                
+                <div class="user-section">
+                    <div class="user-avatar">👤</div>
+                    <div>
+                        <div><strong>João Silva</strong></div>
+                        <div><small>Nível 5</small></div>
+                    </div>
+                    <div class="stat-item">⭐ 1,250 pts</div>
+                    <div class="stat-item">🏆 15º lugar</div>
+                    <button style="background: #ef4444; color: white; border: none; padding: 8px; border-radius: 5px;">🚪</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Elementos do Header</h2>
+            <ul>
+                <li><strong>Logo Seção:</strong> Imagem UNIJUÍ + "PortGO"</li>
+                <li><strong>User Info:</strong> Avatar circular com ícone de usuário</li>
+                <li><strong>User Details:</strong> Nome "João Silva" + "Nível 5"</li>
+                <li><strong>User Stats:</strong> Pontuação (1,250 pts) + Ranking (15º lugar)</li>
+                <li><strong>Logout:</strong> Botão vermelho com ícone de saída</li>
+                <li><strong>Mobile:</strong> Botão de menu hambúrguer (responsivo)</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Comportamento</h2>
+            <ul>
+                <li>Header fixo no topo da página</li>
+                <li>Layout responsivo que se adapta ao mobile</li>
+                <li>Informações do usuário atualizadas dinamicamente</li>
+                <li>Botão logout redireciona para index.html</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

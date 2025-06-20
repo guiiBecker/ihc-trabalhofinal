@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - Game Questions Interface</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .wireframe { border: 2px solid #333; padding: 20px; background: #f5f5f5; }
+        .section { margin: 10px 0; padding: 10px; border: 1px dashed #666; }
+        .game-interface { border: 2px solid #8B5CF6; padding: 20px; background: white; border-radius: 10px; }
+        .game-header-info { display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f8fafc; border-radius: 8px; margin-bottom: 20px; }
+        .progress-bar { width: 100%; height: 8px; background: #e2e8f0; border-radius: 4px; overflow: hidden; }
+        .progress-fill { height: 100%; background: #8B5CF6; width: 30%; transition: width 0.3s; }
+        .question-card { background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin: 20px 0; }
+        .option { display: flex; align-items: center; gap: 15px; padding: 15px; margin: 10px 0; border: 2px solid #e2e8f0; border-radius: 8px; cursor: pointer; }
+        .option:hover { border-color: #8B5CF6; }
+        .option.correct { border-color: #22c55e; background: #f0fdf4; }
+        .option.wrong { border-color: #ef4444; background: #fef2f2; }
+        .option-letter { width: 30px; height: 30px; background: #8B5CF6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; }
+        .game-controls { display: flex; gap: 10px; justify-content: center; margin-top: 20px; }
+        .control-btn { padding: 10px 15px; border: none; border-radius: 8px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
+        .help-btn { background: #fbbf24; color: white; }
+        .swap-btn { background: #06b6d4; color: white; }
+        .cards-btn { background: #8b5cf6; color: white; }
+        .pause-btn { background: #6b7280; color: white; }
+    </style>
+</head>
+<body>
+    <div class="wireframe">
+        <h1>WIREFRAME - GAME QUESTIONS INTERFACE</h1>
+        
+        <div class="section">
+            <h2>Header de Informações do Jogo</h2>
+            <div class="game-header-info">
+                <div>
+                    <div><strong>Questão 3 de 10</strong></div>
+                    <div class="progress-bar">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>⏰ <span>25</span>s</div>
+                </div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <div>⭐ <span>40</span> pts</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Card da Questão</h2>
+            <div class="question-card">
+                <div style="background: #eff6ff; padding: 10px; border-radius: 6px; margin-bottom: 15px; font-size: 0.9em; color: #1e40af;">
+                    <strong>Texto de Apoio:</strong> Leia o trecho a seguir para responder à questão.
+                </div>
+                
+                <h3 style="margin-bottom: 20px; line-height: 1.4;">
+                    Assinale a alternativa em que todas as palavras estão corretamente acentuadas:
+                </h3>
+                
+                <div class="options-container">
+                    <div class="option">
+                        <div class="option-letter">A</div>
+                        <span>último, vírus, álcool, álbum</span>
+                    </div>
+                    <div class="option correct">
+                        <div class="option-letter">B</div>
+                        <span>último, vírus, álcool, álbum</span>
+                    </div>
+                    <div class="option">
+                        <div class="option-letter">C</div>
+                        <span>ultimo, virus, alcool, album</span>
+                    </div>
+                    <div class="option wrong">
+                        <div class="option-letter">D</div>
+                        <span>último, virus, álcool, album</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Controles do Jogo</h2>
+            <div class="game-controls">
+                <button class="control-btn help-btn">
+                    💡 Dica (2)
+                </button>
+                <button class="control-btn swap-btn">
+                    🔄 Trocar (1)
+                </button>
+                <button class="control-btn cards-btn">
+                    📚 Cartas (1)
+                </button>
+                <button class="control-btn pause-btn">
+                    ⏸️ Pausar
+                </button>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Estados das Opções</h2>
+            <ul>
+                <li><strong>Normal:</strong> Borda cinza, fundo branco</li>
+                <li><strong>Hover:</strong> Borda roxa ao passar o mouse</li>
+                <li><strong>Correta:</strong> Borda verde, fundo verde claro</li>
+                <li><strong>Incorreta:</strong> Borda vermelha, fundo vermelho claro</li>
+                <li><strong>Selecionada:</strong> Destaque visual até mostrar resultado</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Comportamentos</h2>
+            <ul>
+                <li><strong>Timer:</strong> Contagem regressiva visual, fim automático em 0</li>
+                <li><strong>Progresso:</strong> Barra que avança conforme questões respondidas</li>
+                <li><strong>Ajudas:</strong> Contadores decrementam quando usadas</li>
+                <li><strong>Feedback:</strong> 2 segundos mostrando resultado antes da próxima</li>
+                <li><strong>Fim do jogo:</strong> Modal com resultado final após 10 questões</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Elementos Dinâmicos</h2>
+            <ul>
+                <li>Texto da questão carregado do arquivo questions.js</li>
+                <li>Texto de apoio opcional por questão</li>
+                <li>4 opções de resposta (A, B, C, D)</li>
+                <li>Contador de questões atualizado dinamicamente</li>
+                <li>Score acumulado em tempo real</li>
+                <li>Timer com mudança de cor quando < 10s</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 

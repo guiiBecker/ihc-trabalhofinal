@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wireframe - New Game Flow</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .wireframe { border: 2px solid #333; padding: 20px; background: #f5f5f5; }
+        .section { margin: 10px 0; padding: 10px; border: 1px dashed #666; }
+        .flow-step { border: 2px solid #8B5CF6; padding: 15px; margin: 10px 0; background: white; border-radius: 10px; }
+        .grades-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 10px 0; }
+        .levels-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 10px 0; }
+        .grade-card { border: 1px solid #ddd; padding: 15px; background: #f9f9f9; border-radius: 8px; text-align: center; }
+        .first-year { border-left: 4px solid #22c55e; }
+        .second-year { border-left: 4px solid #f59e0b; }
+        .third-year { border-left: 4px solid #ef4444; }
+        .level-easy { border-left: 4px solid #22c55e; }
+        .level-medium { border-left: 4px solid #f59e0b; }
+        .level-hard { border-left: 4px solid #ef4444; }
+        .back-btn { background: #6b7280; color: white; padding: 8px 16px; border: none; border-radius: 5px; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+    <div class="wireframe">
+        <h1>WIREFRAME - NEW GAME FLOW</h1>
+        
+        <div class="section">
+            <h2>Passo 1: Seleção de Série</h2>
+            <div class="flow-step">
+                <button class="back-btn">← Voltar</button>
+                <h2>Escolha a Série</h2>
+                <p>Selecione a série do ensino médio</p>
+                
+                <div class="grades-grid">
+                    <div class="grade-card first-year">
+                        <div style="font-size: 2em;">🎓</div>
+                        <h3>Ensino Médio - 1º Ano</h3>
+                        <p>Conteúdo básico e introdutório</p>
+                        <div>
+                            <div>📚 Fundamentos</div>
+                            <div>⭐ Nível Iniciante</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grade-card second-year">
+                        <div style="font-size: 2em;">🎓</div>
+                        <h3>Ensino Médio - 2º Ano</h3>
+                        <p>Conteúdo intermediário</p>
+                        <div>
+                            <div>📖 Intermediário</div>
+                            <div>⭐ Nível Médio</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grade-card third-year">
+                        <div style="font-size: 2em;">🏆</div>
+                        <h3>Ensino Médio - 3º Ano</h3>
+                        <p>Preparação para vestibular</p>
+                        <div>
+                            <div>🎯 Avançado</div>
+                            <div>⭐ Nível Expert</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Passo 2: Seleção de Nível</h2>
+            <div class="flow-step">
+                <button class="back-btn">← Voltar</button>
+                <h2>Escolha o Nível</h2>
+                <p>Selecione a dificuldade que deseja jogar</p>
+                
+                <div class="levels-grid">
+                    <div class="grade-card level-easy">
+                        <div style="font-size: 2em;">🌱</div>
+                        <h3>Fácil</h3>
+                        <p>Perfeito para começar</p>
+                        <div>
+                            <div>+10 pontos por acerto</div>
+                            <div>30 segundos por questão</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grade-card level-medium">
+                        <div style="font-size: 2em;">🔥</div>
+                        <h3>Médio</h3>
+                        <p>Para quem quer um desafio</p>
+                        <div>
+                            <div>+20 pontos por acerto</div>
+                            <div>20 segundos por questão</div>
+                        </div>
+                    </div>
+                    
+                    <div class="grade-card level-hard">
+                        <div style="font-size: 2em;">👑</div>
+                        <h3>Difícil</h3>
+                        <p>Para os verdadeiros mestres</p>
+                        <div>
+                            <div>+30 pontos por acerto</div>
+                            <div>15 segundos por questão</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Fluxo de Navegação</h2>
+            <ul>
+                <li><strong>1. Menu Principal:</strong> Clique em "Novo Jogo" → showGradeSelection()</li>
+                <li><strong>2. Seleção de Série:</strong> Escolha série → showLevelSelection('série')</li>
+                <li><strong>3. Seleção de Nível:</strong> Escolha dificuldade → startGame('nível')</li>
+                <li><strong>4. Início do Jogo:</strong> Carrega a área de jogo com questões</li>
+            </ul>
+        </div>
+
+        <div class="section">
+            <h2>Elementos Visuais</h2>
+            <ul>
+                <li>Botão "Voltar" sempre presente</li>
+                <li>Cards com bordas coloridas por categoria</li>
+                <li>Ícones distintivos para cada opção</li>
+                <li>Informações de pontuação e tempo</li>
+                <li>Grid responsivo (3 colunas)</li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html> 
