@@ -26,9 +26,8 @@ Este projeto seguiu as **Fases do Processo Criativo de Vidal**, uma metodologia 
 - **Problemas identificados**:
   - Interface pouco atrativa para estudantes do ensino médio
   - Falta de feedback visual adequado
-  - Navegação confusa entre seções
   - Sistema de gamificação limitado
-  - Ausência de responsividade mobile
+
 
 ### Benchmarking de Aplicativos Educacionais
 Análise comparativa realizada com:
@@ -338,4 +337,4 @@ Portgo/
 
 **PortGO** - Transformando educação em diversão através do design centrado no usuário! 🎓✨
 
-*Projeto desenvolvido seguindo metodologia acadêmica para redesign de aplicação educacional - UNIJUÍ 2024*
+*Projeto desenvolvido seguindo metodologia acadêmica para redesign de aplicação educacional - UNIJUÍ 2025*
