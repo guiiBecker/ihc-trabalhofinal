@@ -641,7 +641,7 @@ body, html {
     flex-wrap: wrap;
 }
 
-.help-btn, .pause-btn, .swap-btn, .cards-btn {
+.help-btn, .end-game-btn, .swap-btn, .cards-btn {
     padding: 1rem 1.5rem;
     border: none;
     border-radius: 50px;
@@ -685,14 +685,16 @@ body, html {
     box-shadow: 0 5px 15px rgba(139, 92, 246, 0.4);
 }
 
-.pause-btn {
-    background: rgba(255, 255, 255, 0.9);
-    color: #333;
+.end-game-btn {
+    background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    color: white;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
 }
 
-.pause-btn:hover {
-    background: white;
+.end-game-btn:hover {
+    background: linear-gradient(135deg, #b91c1c 0%, #991b1b 100%);
     transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.4);
 }
 
 .help-btn:disabled, .swap-btn:disabled, .cards-btn:disabled {
@@ -1305,7 +1307,7 @@ body, html {
         gap: 0.75rem;
     }
     
-    .help-btn, .pause-btn, .swap-btn, .cards-btn {
+    .help-btn, .end-game-btn, .swap-btn, .cards-btn {
         width: 100%;
         padding: 0.8rem 1.2rem;
         font-size: 0.9rem;
@@ -1631,7 +1633,7 @@ body, html {
         justify-content: flex-start;
     }
     
-    .help-btn, .pause-btn, .swap-btn, .cards-btn {
+    .help-btn, .end-game-btn, .swap-btn, .cards-btn {
         padding: 0.7rem 1rem;
         font-size: 0.85rem;
         min-height: 48px;
@@ -1778,7 +1780,7 @@ body, html {
         gap: 0.5rem;
     }
     
-    .help-btn, .pause-btn, .swap-btn, .cards-btn {
+    .help-btn, .end-game-btn, .swap-btn, .cards-btn {
         padding: 0.6rem 1rem;
         font-size: 0.8rem;
         min-height: 40px;
@@ -1812,7 +1814,7 @@ body, html {
         transition: transform 0.1s ease;
     }
     
-    .help-btn:active, .pause-btn:active, .swap-btn:active, .cards-btn:active, .btn-primary:active, .btn-secondary:active {
+    .help-btn:active, .end-game-btn:active, .swap-btn:active, .cards-btn:active, .btn-primary:active, .btn-secondary:active {
         transform: scale(0.98);
         transition: transform 0.1s ease;
     }
@@ -2419,5 +2421,150 @@ body, html {
     .results-container {
         max-height: 200px;
         padding-right: 2px;
+    }
+}
+
+/* Balão de Sugestão (Dica) */
+.hint-balloon {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    z-index: 2000;
+    width: 90%;
+    max-width: 500px;
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    pointer-events: none;
+}
+
+.hint-balloon.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: auto;
+}
+
+.hint-balloon-content {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    position: relative;
+    animation: balloonBounce 0.5s ease-out;
+}
+
+.hint-balloon-header {
+    background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.hint-balloon-header i {
+    font-size: 1.2rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.hint-balloon-header span {
+    font-weight: 600;
+    font-size: 1.1rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hint-balloon-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.25rem;
+    margin-left: auto;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hint-balloon-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.hint-balloon-text {
+    padding: 1.5rem;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #374151;
+    text-align: justify;
+    hyphens: auto;
+    word-wrap: break-word;
+}
+
+/* Animação de entrada do balão */
+@keyframes balloonBounce {
+    0% {
+        transform: scale(0.3);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Efeito de sombra pulsante */
+.hint-balloon-content::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #fbbf24, #f59e0b, #fbbf24);
+    border-radius: 22px;
+    z-index: -1;
+    filter: blur(4px);
+    animation: pulseGlow 2s infinite alternate;
+}
+
+@keyframes pulseGlow {
+    0% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0.8;
+    }
+}
+
+/* Responsividade do balão */
+@media (max-width: 768px) {
+    .hint-balloon {
+        width: 95%;
+        max-width: none;
+    }
+    
+    .hint-balloon-header {
+        padding: 0.875rem 1.25rem;
+    }
+    
+    .hint-balloon-header span {
+        font-size: 1rem;
+    }
+    
+    .hint-balloon-text {
+        padding: 1.25rem;
+        font-size: 0.9rem;
     }
 } 

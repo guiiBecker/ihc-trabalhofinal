@@ -109,7 +109,6 @@ PortGO Redesign
 ### Requisitos Funcionais Identificados
 - **Sistema de Login/Cadastro** simplificado
 - **Seleção de níveis** de dificuldade (1º, 2º, 3º ano)
-- **Interface de jogo** com timer e pontuação
 - **Sistema de ajudas** (dicas, trocar questão)
 - **Rankings** de alunos e escolas
 - **Modal de resultados** com feedback

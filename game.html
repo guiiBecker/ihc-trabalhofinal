@@ -300,9 +300,9 @@
                     <i class="fas fa-layer-group"></i>
                     Cartas (1)
                 </button>
-                <button class="pause-btn" onclick="pauseGame()">
-                    <i class="fas fa-pause"></i>
-                    Pausar
+                <button class="end-game-btn" onclick="endGameEarly()">
+                    <i class="fas fa-flag-checkered"></i>
+                    Encerrar
                 </button>
             </div>
         </section>
@@ -641,7 +641,7 @@
             document.querySelector('.help-btn').disabled = true;
             document.querySelector('.swap-btn').disabled = true;
             document.querySelector('.cards-btn').disabled = true;
-            document.querySelector('.pause-btn').disabled = true;
+            document.querySelector('.end-game-btn').disabled = true;
 
             // Mostra o botão de próxima questão
             setTimeout(() => {
@@ -652,7 +652,7 @@
                     if (helpCount > 0) document.querySelector('.help-btn').disabled = false;
                     if (swapCount > 0) document.querySelector('.swap-btn').disabled = false;
                     if (cardsCount > 0) document.querySelector('.cards-btn').disabled = false;
-                    document.querySelector('.pause-btn').disabled = false;
+                    document.querySelector('.end-game-btn').disabled = false;
                 } else {
                     endGame();
                 }
@@ -785,25 +785,8 @@
                 return;
             }
 
-            const question = gameQuestions[currentQuestion];
-            const options = document.querySelectorAll('.option');
-            let wrongOptions = [];
-            
-            // Encontra as opções incorretas
-            options.forEach((option, index) => {
-                if (index !== question.correct) {
-                    wrongOptions.push(index);
-                }
-            });
-
-            // Remove 2 opções incorretas aleatoriamente
-            const optionsToRemove = wrongOptions.sort(() => 0.5 - Math.random()).slice(0, 2);
-            
-            optionsToRemove.forEach(index => {
-                options[index].style.opacity = '0.3';
-                options[index].style.pointerEvents = 'none';
-                options[index].style.textDecoration = 'line-through';
-            });
+            // Mostrar balão de sugestão ao invés de excluir opções
+            showHintBalloon();
 
             helpCount--;
             document.querySelector('.help-btn').innerHTML = `
@@ -814,6 +797,70 @@
             if (helpCount <= 0) {
                 document.querySelector('.help-btn').disabled = true;
                 document.querySelector('.help-btn').style.opacity = '0.5';
+            }
+        }
+
+        // Função para mostrar balão de sugestão
+        function showHintBalloon() {
+            // Remover balão existente se houver
+            const existingBalloon = document.getElementById('hintBalloon');
+            if (existingBalloon) {
+                existingBalloon.remove();
+            }
+            
+            // Criar balão de sugestão
+            const balloon = document.createElement('div');
+            balloon.id = 'hintBalloon';
+            balloon.className = 'hint-balloon';
+            
+            // Texto de sugestão Lorem Ipsum contextual
+            const hintTexts = [
+                'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pense nas regras fundamentais da gramática para resolver esta questão. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+                'Ut enim ad minim veniam, quis nostrud exercitation. Considere o contexto e as estruturas linguísticas apresentadas. Ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+                'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Analise cada alternativa cuidadosamente observando as regras ortográficas.',
+                'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lembre-se das regras de acentuação e pontuação.',
+                'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Observe os padrões linguísticos e a estrutura das frases apresentadas.'
+            ];
+            
+            const randomHint = hintTexts[Math.floor(Math.random() * hintTexts.length)];
+            
+            balloon.innerHTML = `
+                <div class="hint-balloon-content">
+                    <div class="hint-balloon-header">
+                        <i class="fas fa-lightbulb"></i>
+                        <span>Dica de Estudo</span>
+                        <button class="hint-balloon-close" onclick="closeHintBalloon()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="hint-balloon-text">
+                        ${randomHint}
+                    </div>
+                </div>
+            `;
+            
+            // Adicionar balão ao DOM
+            document.body.appendChild(balloon);
+            
+            // Animar entrada do balão
+            setTimeout(() => {
+                balloon.classList.add('show');
+            }, 100);
+            
+            // Auto-fechar após 10 segundos
+            setTimeout(() => {
+                closeHintBalloon();
+            }, 10000);
+        }
+
+        // Função para fechar balão de sugestão
+        function closeHintBalloon() {
+            const balloon = document.getElementById('hintBalloon');
+            if (balloon) {
+                balloon.classList.remove('show');
+                setTimeout(() => {
+                    balloon.remove();
+                }, 300);
             }
         }
 
@@ -899,10 +946,24 @@
             }
         }
 
-        function pauseGame() {
-            // Timer desabilitado - pausar apenas mostra mensagem
-            alert('Jogo pausado! Clique em OK para continuar.');
-            // startTimer(); // Timer desabilitado
+        function endGameEarly() {
+            // Confirmar se o usuário realmente quer encerrar
+            if (confirm('Tem certeza que deseja encerrar o jogo? As questões não respondidas serão marcadas como incorretas.')) {
+                // Marcar questões não respondidas como incorretas
+                for (let i = currentQuestion; i < totalQuestions; i++) {
+                    if (!userAnswers[i]) {
+                        userAnswers[i] = {
+                            questionIndex: i,
+                            userChoice: -1, // Não respondida
+                            correctChoice: gameQuestions[i] ? gameQuestions[i].correct : 0,
+                            isCorrect: false
+                        };
+                    }
+                }
+                
+                // Ir para tela de feedback
+                showFeedbackScreen();
+            }
         }
 
         function showMainMenu() {

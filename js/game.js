@@ -439,40 +439,98 @@ function useHelp() {
     
     gameState.helpUsed--;
     
-    const questions = questionsDatabase[gameState.difficulty];
-    const question = questions[gameState.currentQuestion];
-    const options = document.querySelectorAll('.option');
-    
-    // Remover duas opções incorretas aleatórias
-    const incorrectOptions = [];
-    options.forEach((option, index) => {
-        if (index !== question.correct) {
-            incorrectOptions.push(index);
-        }
-    });
-    
-    // Embaralhar e remover 2
-    const shuffled = incorrectOptions.sort(() => 0.5 - Math.random());
-    for (let i = 0; i < 2 && i < shuffled.length; i++) {
-        options[shuffled[i]].classList.add('disabled');
-        options[shuffled[i]].style.pointerEvents = 'none';
-    }
+    // Mostrar balão de sugestão ao invés de excluir opções
+    showHintBalloon();
     
     updateGameInfo();
-    showNotification('Duas opções incorretas foram removidas!', 'info');
+    showNotification('Dica ativada! Veja o balão de sugestão.', 'info');
 }
 
-// Pausar jogo
-function pauseGame() {
-    gameState.isPaused = !gameState.isPaused;
+// Função para mostrar balão de sugestão
+function showHintBalloon() {
+    // Remover balão existente se houver
+    const existingBalloon = document.getElementById('hintBalloon');
+    if (existingBalloon) {
+        existingBalloon.remove();
+    }
     
-    const pauseBtn = document.querySelector('.pause-btn');
-    if (gameState.isPaused) {
-        pauseBtn.innerHTML = '<i class="fas fa-play"></i> Continuar';
-        showNotification('Jogo pausado', 'info');
-    } else {
-        pauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pausar';
-        showNotification('Jogo continuado', 'info');
+    // Criar balão de sugestão
+    const balloon = document.createElement('div');
+    balloon.id = 'hintBalloon';
+    balloon.className = 'hint-balloon';
+    
+    // Texto de sugestão Lorem Ipsum contextual
+    const hintTexts = [
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pense nas regras fundamentais da gramática para resolver esta questão. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        'Ut enim ad minim veniam, quis nostrud exercitation. Considere o contexto e as estruturas linguísticas apresentadas. Ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Analise cada alternativa cuidadosamente observando as regras ortográficas.',
+        'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lembre-se das regras de acentuação e pontuação.',
+        'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium. Observe os padrões linguísticos e a estrutura das frases apresentadas.'
+    ];
+    
+    const randomHint = hintTexts[Math.floor(Math.random() * hintTexts.length)];
+    
+    balloon.innerHTML = `
+        <div class="hint-balloon-content">
+            <div class="hint-balloon-header">
+                <i class="fas fa-lightbulb"></i>
+                <span>Dica de Estudo</span>
+                <button class="hint-balloon-close" onclick="closeHintBalloon()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="hint-balloon-text">
+                ${randomHint}
+            </div>
+        </div>
+    `;
+    
+    // Adicionar balão ao DOM
+    document.body.appendChild(balloon);
+    
+    // Animar entrada do balão
+    setTimeout(() => {
+        balloon.classList.add('show');
+    }, 100);
+    
+    // Auto-fechar após 10 segundos
+    setTimeout(() => {
+        closeHintBalloon();
+    }, 10000);
+}
+
+// Função para fechar balão de sugestão
+function closeHintBalloon() {
+    const balloon = document.getElementById('hintBalloon');
+    if (balloon) {
+        balloon.classList.remove('show');
+        setTimeout(() => {
+            balloon.remove();
+        }, 300);
+    }
+}
+
+
+
+// Encerrar jogo antecipadamente
+function endGameEarly() {
+    // Confirmar se o usuário realmente quer encerrar
+    if (confirm('Tem certeza que deseja encerrar o jogo? As questões não respondidas serão marcadas como incorretas.')) {
+        // Marcar questões não respondidas como incorretas
+        for (let i = gameState.currentQuestion; i < gameState.totalQuestions; i++) {
+            if (!gameState.userAnswers[i]) {
+                gameState.userAnswers[i] = {
+                    question: questionsDatabase[gameState.difficulty][i],
+                    questionIndex: i,
+                    userChoice: -1, // Não respondida
+                    correctChoice: questionsDatabase[gameState.difficulty][i].correct,
+                    isCorrect: false
+                };
+            }
+        }
+        
+        // Ir para tela de feedback
+        showFeedbackScreen();
     }
 }
 
@@ -821,10 +879,11 @@ function addTouchSupport() {
 // Eventos de teclado (desktop only)
 if (!isMobileDevice()) {
     document.addEventListener('keydown', function(e) {
-        // ESC para fechar modais
+        // ESC para fechar modais e balão de dica
         if (e.key === 'Escape') {
             const modals = ['resultModal', 'rankingModal', 'rulesModal'];
             modals.forEach(modalId => closeModal(modalId));
+            closeHintBalloon();
         }
         
         // Números 1-4 para selecionar opções durante o jogo
@@ -844,17 +903,18 @@ if (!isMobileDevice()) {
             const gameArea = document.getElementById('gameArea');
             if (gameArea && gameArea.style.display !== 'none') {
                 e.preventDefault();
-                pauseGame();
+                                    endGameEarly();
             }
         }
     });
 } else {
     // Mobile-specific keyboard handling
     document.addEventListener('keydown', function(e) {
-        // Only ESC for closing modals on mobile
+        // Only ESC for closing modals and hint balloon on mobile
         if (e.key === 'Escape') {
             const modals = ['resultModal', 'rankingModal', 'rulesModal'];
             modals.forEach(modalId => closeModal(modalId));
+            closeHintBalloon();
         }
     });
 }
