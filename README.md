@@ -244,9 +244,9 @@ A pasta `wireframes/` contém todos os wireframes desenvolvidos:
 - Responsividade adequada
 
 ⚠️ **Melhorias Identificadas**:
-- Timer pode causar ansiedade (implementar opção de desativar)
+- ✅ ~~Timer pode causar ansiedade~~ → **RESOLVIDO: Timer desabilitado**
+- ✅ ~~Explicações após erro~~ → **RESOLVIDO: Gabarito detalhado implementado**
 - Questões muito similares (ampliar banco de dados)
-- Explicações após erro (adicionar feedback educativo)
 
 ---
 
@@ -274,6 +274,9 @@ Portgo/
 ├── wireframes/             # Protótipos de baixa fidelidade
 │   ├── index/              # Wireframes da página inicial
 │   └── menu principal/     # Wireframes da interface do jogo
+│       └── game/           # Wireframes específicos do jogo
+│           ├── feedback/   # Wireframe da tela de feedback
+│           └── ...         # Outros wireframes do jogo
 ├── assets/                 # Imagens e recursos
 └── README.md              # Documentação do projeto
 ```
@@ -290,11 +293,56 @@ Portgo/
 - ✅ Dashboard com estatísticas do usuário
 - ✅ Sistema de seleção de série (1º, 2º, 3º ano)
 - ✅ Três níveis de dificuldade
-- ✅ Interface de questões com timer
+- ✅ Interface de questões com **tempo ilimitado** (timer desabilitado)
 - ✅ Sistema de ajudas (Dica, Trocar, Cartas)
 - ✅ Feedback visual para respostas
-- ✅ Modal de resultado final
+- ✅ **Tela de feedback completa** com gabarito detalhado
+- ✅ **Sistema de estatísticas** (pontos, acertos, porcentagem)
+- ✅ **Mensagens motivacionais** baseadas na performance
+- ✅ **Scroll duplo** (página e gabarito independentes)
 - ✅ Rankings de alunos e escolas
+
+## 🆕 Atualizações Recentes (Dezembro 2024)
+
+### 🕐 Desabilitação do Timer
+- **Mudança**: Timer completamente desabilitado, oferecendo **tempo ilimitado**
+- **Motivo**: Reduzir ansiedade e permitir aprendizado mais reflexivo
+- **Implementação**: 
+  - Função `startTimer()` desabilitada
+  - Display visual mostra "∞" (infinito)
+  - Pontuação sem bônus de tempo
+  - Foco no aprendizado, não na velocidade
+
+### 🎨 Nova Tela de Feedback Completa
+- **Tela de feedback full-screen** substitui modal simples
+- **Gabarito detalhado** com todas as questões e respostas
+- **Estatísticas completas**:
+  - Pontuação total
+  - Número de acertos vs total
+  - Porcentagem de aproveitamento
+- **Sistema de mensagens motivacionais**:
+  - 90-100%: "Excelente! Performance excepcional!"
+  - 70-89%: "Muito bom! Ótimo desempenho!"
+  - 50-69%: "Bom trabalho! Você está progredindo!"
+  - 0-49%: "Continue tentando! Não desista!"
+
+### 🎯 Melhorias de UX
+- **Scroll duplo funcional**:
+  - Página inteira permite scroll quando necessário
+  - Área de gabarito com scroll independente
+- **Animações aprimoradas**:
+  - Slide-in suave da tela de feedback
+  - Transições fluidas entre estados
+- **Design responsivo otimizado**:
+  - Centralização perfeita em todas as telas
+  - Compatibilidade mobile completa
+
+### 📋 Documentação Atualizada
+- **Wireframe da tela de feedback**:
+  - Localização: `wireframes/menu principal/game/feedback/`
+  - Documenta toda a interface e comportamentos
+  - Especifica estados visuais e funcionalidades
+- **Padrão de documentação** mantido consistente
 
 ## 🎯 Como Usar o Sistema
 
@@ -307,9 +355,11 @@ Portgo/
 
 ## 📊 Sistema de Pontuação
 
-- **Fácil**: 10 pontos por acerto, 30 segundos por questão
-- **Médio**: 20 pontos por acerto, 20 segundos por questão  
-- **Difícil**: 30 pontos por acerto, 15 segundos por questão
+- **Fácil**: 10 pontos por acerto (tempo ilimitado)
+- **Médio**: 20 pontos por acerto (tempo ilimitado)  
+- **Difícil**: 30 pontos por acerto (tempo ilimitado)
+
+> **Nota**: Sistema de pontuação focado no aprendizado, sem pressão de tempo ou bônus temporal.
 
 ## 🔮 Próximos Passos
 
@@ -329,12 +379,26 @@ Portgo/
 
 ### Impacto Educacional
 - **Gamificação efetiva** aumenta motivação
-- **Feedback imediato** melhora retenção
+- **Feedback detalhado** melhora retenção e aprendizado
 - **Interface intuitiva** reduz barreira de entrada
 - **Personalização** atende diferentes perfis de estudantes
+- **Tempo ilimitado** reduz ansiedade e permite reflexão
+- **Gabarito completo** facilita revisão e correção de erros
+
+### Técnicas Aplicadas nas Atualizações
+- **CSS Grid & Flexbox**: Layout responsivo das estatísticas
+- **Scroll Management**: Controle independente de áreas de scroll
+- **CSS Animations**: Transições suaves e feedback visual
+- **JavaScript ES6**: Tracking de respostas e geração dinâmica de conteúdo
+- **Responsive Design**: Adaptação para diferentes viewports
+- **UX Psychology**: Mensagens motivacionais baseadas em performance
 
 ---
 
 **PortGO** - Transformando educação em diversão através do design centrado no usuário! 🎓✨
 
 *Projeto desenvolvido seguindo metodologia acadêmica para redesign de aplicação educacional - UNIJUÍ 2025*
+
+---
+
+📅 **Última atualização**: Dezembro 2024 - Implementação da tela de feedback completa e desabilitação do timer
