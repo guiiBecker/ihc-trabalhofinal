@@ -1,4 +1,3 @@
-Sim! Posso analisar as heurísticas de usabilidade de Jakob Nielsen presentes no seu projeto com base nos arquivos HTML fornecidos. As 10 heurísticas de Nielsen são princípios gerais para interfaces mais fáceis de usar. Veja como algumas delas aparecem no seu projeto PortGO:
 
 ---
 
