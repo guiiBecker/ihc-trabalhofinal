@@ -1,4 +1,5 @@
 # PortGO - Redesenho de Aplicativo Educacional
+##### Guilherme Becker e Nathan Weirich
 
 O PortGO é uma aplicação web educacional redesenhada para estudantes do ensino médio, transformando o aprendizado em uma experiência divertida e interativa através de jogos de perguntas e respostas.
 
@@ -74,6 +75,13 @@ PortGO Redesign
 - **Objetivos**: Maximizar pontuação, estudar eficientemente
 - **Frustrações**: Perda de tempo, falta de desafios adequados
 - **Motivações**: Rankings, progressão visível
+
+### Terceira Persona: **Lucas - Estudante do 1º Ano**
+- **Idade**: 15 anos
+- **Perfil**: Estudante iniciante no ensino médio, curioso e explorador
+- **Objetivos**: Atingir boa base no conteúdo de português, entender melhor as matérias para os anos seguintes
+- **Frustrações**: Dificuldade em encontrar métodos de estudo que sejam interessantes e dinâmicos
+- **Motivações**: Aprender de forma prática e interativa, quer ver progresso pessoal e realizar atividades em grupo
 
 ### Jornada do Usuário
 
@@ -207,7 +215,7 @@ A pasta `wireframes/` contém todos os wireframes desenvolvidos:
 
 ### Metodologia de Teste
 - **Tipo**: Teste de usabilidade moderado
-- **Participantes**: 5 estudantes do ensino médio (16-18 anos)
+- **Participantes**: 3 estudantes do ensino superior (22-25 anos)
 - **Ambiente**: Remoto via screen sharing
 - **Duração**: 30 minutos por sessão
 
@@ -302,40 +310,6 @@ Portgo/
 -  **Scroll duplo** (página e gabarito independentes)
 -  Rankings de alunos e escolas
 
-##  Atualizações Recentes (Dezembro 2024)
-
-###  Desabilitação do Timer
-- **Mudança**: Timer completamente desabilitado, oferecendo **tempo ilimitado**
-- **Motivo**: Reduzir ansiedade e permitir aprendizado mais reflexivo
-- **Implementação**: 
-  - Função `startTimer()` desabilitada
-  - Display visual mostra "∞" (infinito)
-  - Pontuação sem bônus de tempo
-  - Foco no aprendizado, não na velocidade
-
-###  Nova Tela de Feedback Completa
-- **Tela de feedback full-screen** substitui modal simples
-- **Gabarito detalhado** com todas as questões e respostas
-- **Estatísticas completas**:
-  - Pontuação total
-  - Número de acertos vs total
-  - Porcentagem de aproveitamento
-- **Sistema de mensagens motivacionais**:
-  - 90-100%: "Excelente! Performance excepcional!"
-  - 70-89%: "Muito bom! Ótimo desempenho!"
-  - 50-69%: "Bom trabalho! Você está progredindo!"
-  - 0-49%: "Continue tentando! Não desista!"
-
-###  Melhorias de UX
-- **Scroll duplo funcional**:
-  - Página inteira permite scroll quando necessário
-  - Área de gabarito com scroll independente
-- **Animações aprimoradas**:
-  - Slide-in suave da tela de feedback
-  - Transições fluidas entre estados
-- **Design responsivo otimizado**:
-  - Centralização perfeita em todas as telas
-  - Compatibilidade mobile completa
 
 ###  Documentação Atualizada
 - **Wireframe da tela de feedback**:
@@ -353,37 +327,6 @@ Portgo/
 5. **Responda** as 10 questões usando as ajudas quando necessário
 6. **Visualize** seu resultado e compare com outros jogadores
 
-##  Sistema de Pontuação
-
-- **Fácil**: 10 pontos por acerto (tempo ilimitado)
-- **Médio**: 20 pontos por acerto (tempo ilimitado)  
-- **Difícil**: 30 pontos por acerto (tempo ilimitado)
-
-> **Nota**: Sistema de pontuação focado no aprendizado, sem pressão de tempo ou bônus temporal.
-
-##  Próximos Passos
-
-1. **Implementação Backend**: Sistema de usuários e dados persistentes
-2. **Banco de Questões**: Expansão com mais matérias e dificuldades
-3. **Sistema Social**: Chat e competições entre turmas
-4. **Analytics**: Relatórios detalhados de performance
-5. **PWA**: Conversão para aplicativo instalável
-
-##  Resultados do Redesenho
-
-### Melhorias Alcançadas
-- **+156% engajamento** visual (feedback dos testes)
-- **-67% tempo** para completar tarefas principais
-- **+89% satisfação** dos usuários testados
-- **100% responsividade** mobile implementada
-
-### Impacto Educacional
-- **Gamificação efetiva** aumenta motivação
-- **Feedback detalhado** melhora retenção e aprendizado
-- **Interface intuitiva** reduz barreira de entrada
-- **Personalização** atende diferentes perfis de estudantes
-- **Tempo ilimitado** reduz ansiedade e permite reflexão
-- **Gabarito completo** facilita revisão e correção de erros
 
 ### Técnicas Aplicadas nas Atualizações
 - **CSS Grid & Flexbox**: Layout responsivo das estatísticas
