@@ -307,6 +307,74 @@
             </div>
         </section>
 
+        <!-- Tela de Feedback -->
+        <section class="feedback-screen" id="feedbackScreen" style="display: none;">
+            <div class="feedback-container">
+                <div class="feedback-header">
+                    <div class="feedback-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h2 id="feedbackTitle">Parabéns!</h2>
+                    <p id="feedbackSubtitle">Você concluiu o desafio!</p>
+                </div>
+
+                <div class="feedback-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="feedbackScore">0</h3>
+                            <p>Pontos Conquistados</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="feedbackCorrect">0</h3>
+                            <p>Questões Certas</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i class="fas fa-percentage"></i>
+                        </div>
+                        <div class="stat-content">
+                            <h3 id="feedbackPercentage">0%</h3>
+                            <p>Taxa de Acerto</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="feedback-message">
+                    <p id="feedbackPerformanceMessage">Continue praticando para melhorar ainda mais!</p>
+                </div>
+
+                <div class="feedback-results">
+                    <h3>
+                        <i class="fas fa-clipboard-list"></i>
+                        Gabarito das Questões
+                    </h3>
+                    <div class="results-container" id="resultsContainer">
+                        <!-- Gabarito será inserido aqui -->
+                    </div>
+                </div>
+
+                <div class="feedback-actions">
+                    <button class="btn-primary" onclick="restartGame()">
+                        <i class="fas fa-redo"></i>
+                        Jogar Novamente
+                    </button>
+                    <button class="btn-secondary" onclick="backToMenu()">
+                        <i class="fas fa-home"></i>
+                        Voltar ao Menu
+                    </button>
+                </div>
+            </div>
+        </section>
+
         <!-- Modal de Resultado -->
         <div id="resultModal" class="modal">
             <div class="modal-content result-modal">
@@ -439,6 +507,8 @@
         let cardsCount = 1;
         let gameQuestions = [];
         let totalQuestions = 10;
+        let userAnswers = []; // Para salvar as respostas do usuário
+        let correctAnswersCount = 0;
 
         function startGame(level) {
             gameLevel = level;
@@ -446,10 +516,13 @@
             document.getElementById('levelSelection').style.display = 'none';
             document.getElementById('gradeSelection').style.display = 'none';
             document.getElementById('gameArea').style.display = 'block';
+            document.getElementById('feedbackScreen').style.display = 'none';
             
             // Reseta o jogo
             currentQuestion = 0;
             score = 0;
+            correctAnswersCount = 0;
+            userAnswers = [];
             document.getElementById('score').textContent = '0';
             
             // Cria um array de questões embaralhadas para o jogo
@@ -537,9 +610,19 @@
                 option.classList.add('disabled');
             });
 
+            // Salvar a resposta do usuário
+            userAnswers[currentQuestion] = {
+                questionIndex: currentQuestion,
+                userChoice: selectedIndex,
+                correctChoice: question.correct,
+                isCorrect: selectedIndex === question.correct
+            };
+
             // Se o tempo acabou (selectedIndex = -1), apenas mostra a resposta correta
             if (selectedIndex === -1) {
                 options[question.correct].classList.add('correct');
+                userAnswers[currentQuestion].userChoice = -1; // Tempo esgotado
+                userAnswers[currentQuestion].isCorrect = false;
             } else if (selectedIndex !== question.correct) {
                 // Se a resposta estiver errada, mostra a correta
                 options[selectedIndex].classList.add('wrong');
@@ -547,6 +630,7 @@
             } else {
                 // Se a resposta estiver correta, apenas destaca ela em verde
                 options[selectedIndex].classList.add('correct');
+                correctAnswersCount++;
                 // Pontuação baseada no nível
                 const points = gameLevel === 'easy' ? 10 : gameLevel === 'medium' ? 20 : 30;
                 score += points;
@@ -583,14 +667,115 @@
         }
 
         function endGame() {
-            alert(`Fim de jogo! Sua pontuação final foi: ${score}`);
-            // Reseta o jogo e volta para o menu principal
+            showFeedbackScreen();
+        }
+
+        function showFeedbackScreen() {
+            // Ocultar área do jogo e mostrar tela de feedback
+            document.getElementById('gameArea').style.display = 'none';
+            document.getElementById('feedbackScreen').style.display = 'block';
+
+            // Calcular estatísticas
+            const percentage = Math.round((correctAnswersCount / totalQuestions) * 100);
+            
+            // Determinar título e mensagem baseado na performance
+            let title = 'Parabéns!';
+            let subtitle = 'Você concluiu o desafio!';
+            let message = 'Continue praticando para melhorar ainda mais!';
+            
+            if (percentage >= 90) {
+                title = 'Excelente!';
+                subtitle = 'Performance excepcional!';
+                message = 'Você demonstrou um conhecimento impressionante! Continue assim!';
+            } else if (percentage >= 70) {
+                title = 'Muito bom!';
+                subtitle = 'Ótimo desempenho!';
+                message = 'Você está no caminho certo! Parabéns pelo bom resultado!';
+            } else if (percentage >= 50) {
+                title = 'Bom trabalho!';
+                subtitle = 'Você está progredindo!';
+                message = 'Continue estudando e você chegará lá! Cada tentativa é um aprendizado!';
+            } else {
+                title = 'Continue tentando!';
+                subtitle = 'Não desista!';
+                message = 'O aprendizado é um processo. Continue praticando e você verá a melhoria!';
+            }
+
+            // Atualizar elementos da tela
+            document.getElementById('feedbackTitle').textContent = title;
+            document.getElementById('feedbackSubtitle').textContent = subtitle;
+            document.getElementById('feedbackScore').textContent = score;
+            document.getElementById('feedbackCorrect').textContent = correctAnswersCount;
+            document.getElementById('feedbackPercentage').textContent = percentage + '%';
+            document.getElementById('feedbackPerformanceMessage').textContent = message;
+
+            // Gerar gabarito
+            generateGameResults();
+        }
+
+        function generateGameResults() {
+            const resultsContainer = document.getElementById('resultsContainer');
+            resultsContainer.innerHTML = '';
+
+            userAnswers.forEach((answer, index) => {
+                const question = gameQuestions[answer.questionIndex];
+                const resultItem = document.createElement('div');
+                resultItem.className = `result-item ${answer.isCorrect ? 'correct' : 'incorrect'}`;
+
+                const statusIcon = answer.isCorrect ? '✓' : '✗';
+                const statusClass = answer.isCorrect ? 'correct' : 'incorrect';
+
+                let userChoiceText = '';
+                if (answer.userChoice === -1) {
+                    userChoiceText = 'Tempo esgotado';
+                } else {
+                    userChoiceText = question.options[answer.userChoice];
+                }
+
+                resultItem.innerHTML = `
+                    <div class="result-header">
+                        <div class="result-status ${statusClass}">
+                            ${statusIcon}
+                        </div>
+                        <div class="result-question">
+                            ${index + 1}. ${question.question}
+                        </div>
+                    </div>
+                    <div class="result-answers">
+                        <div class="result-answer user-answer ${answer.isCorrect ? '' : 'incorrect'}">
+                            <div class="result-answer-letter">${answer.userChoice === -1 ? '⏰' : String.fromCharCode(65 + answer.userChoice)}</div>
+                            <div class="result-answer-text">
+                                <strong>Sua resposta:</strong> ${userChoiceText}
+                            </div>
+                        </div>
+                        <div class="result-answer correct-answer">
+                            <div class="result-answer-letter">${String.fromCharCode(65 + answer.correctChoice)}</div>
+                            <div class="result-answer-text">
+                                <strong>Resposta correta:</strong> ${question.options[answer.correctChoice]}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                resultsContainer.appendChild(resultItem);
+            });
+        }
+
+        function restartGame() {
+            showLevelSelection(selectedGrade);
+        }
+
+        function backToMenu() {
+            // Resetar variáveis do jogo
             currentQuestion = 0;
             score = 0;
+            correctAnswersCount = 0;
+            userAnswers = [];
             helpCount = 2;
             swapCount = 1;
             cardsCount = 1;
             document.getElementById('score').textContent = '0';
+            
             showMainMenu();
         }
 
@@ -724,6 +909,7 @@
             document.getElementById('gameArea').style.display = 'none';
             document.getElementById('levelSelection').style.display = 'none';
             document.getElementById('gradeSelection').style.display = 'none';
+            document.getElementById('feedbackScreen').style.display = 'none';
             document.getElementById('mainMenu').style.display = 'block';
         }
 
@@ -731,6 +917,7 @@
             document.getElementById('mainMenu').style.display = 'none';
             document.getElementById('levelSelection').style.display = 'none';
             document.getElementById('gameArea').style.display = 'none';
+            document.getElementById('feedbackScreen').style.display = 'none';
             document.getElementById('gradeSelection').style.display = 'block';
         }
 
@@ -739,6 +926,7 @@
             document.getElementById('mainMenu').style.display = 'none';
             document.getElementById('gradeSelection').style.display = 'none';
             document.getElementById('gameArea').style.display = 'none';
+            document.getElementById('feedbackScreen').style.display = 'none';
             document.getElementById('levelSelection').style.display = 'block';
         }
 

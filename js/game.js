@@ -9,7 +9,8 @@ let gameState = {
     correctAnswers: 0,
     gameStartTime: null,
     helpUsed: 3,
-    isPaused: false
+    isPaused: false,
+    userAnswers: [] // Para salvar as respostas do usuário
 };
 
 // Base de dados de questões
@@ -220,7 +221,7 @@ function showLevelSelection() {
 }
 
 function hideAllSections() {
-    const sections = ['mainMenu', 'levelSelection', 'gameArea'];
+    const sections = ['mainMenu', 'levelSelection', 'gameArea', 'feedbackScreen'];
     sections.forEach(section => {
         const element = document.getElementById(section);
         if (element) {
@@ -246,7 +247,8 @@ function startGame(difficulty) {
         correctAnswers: 0,
         gameStartTime: Date.now(),
         helpUsed: 3,
-        isPaused: false
+        isPaused: false,
+        userAnswers: [] // Para salvar as respostas do usuário
     };
 
     hideAllSections();
@@ -309,6 +311,15 @@ function selectAnswer(selectedIndex) {
     // Marcar resposta selecionada
     options[selectedIndex].classList.add('selected');
     
+    // Salvar a resposta do usuário
+    gameState.userAnswers[gameState.currentQuestion] = {
+        questionIndex: gameState.currentQuestion,
+        userChoice: selectedIndex,
+        correctChoice: question.correct,
+        isCorrect: selectedIndex === question.correct,
+        question: question
+    };
+
     // Processar resposta imediatamente
     if (selectedIndex === question.correct) {
         // Resposta correta
@@ -477,28 +488,147 @@ function endGame() {
     // Timer desabilitado - não há timer para parar
     // clearInterval(gameState.timer);
     
-    const totalTime = Math.floor((Date.now() - gameState.gameStartTime) / 1000);
-    
-    document.getElementById('finalScore').textContent = gameState.score;
-    document.getElementById('correctAnswers').textContent = 
-        `${gameState.correctAnswers}/${gameState.totalQuestions}`;
-    document.getElementById('totalTime').textContent = `${totalTime}s`;
-    
-    // Determinar título baseado na performance
-    const percentage = (gameState.correctAnswers / gameState.totalQuestions) * 100;
-    let title = 'Parabéns!';
-    if (percentage >= 90) {
-        title = 'Excelente!';
-    } else if (percentage >= 70) {
-        title = 'Muito bom!';
-    } else if (percentage >= 50) {
-        title = 'Bom trabalho!';
+    // Verificar se existe tela de feedback, se não, usar modal padrão
+    const feedbackScreen = document.getElementById('feedbackScreen');
+    if (feedbackScreen) {
+        showFeedbackScreen();
     } else {
-        title = 'Continue praticando!';
+        // Fallback para modal padrão
+        const totalTime = Math.floor((Date.now() - gameState.gameStartTime) / 1000);
+        
+        document.getElementById('finalScore').textContent = gameState.score;
+        document.getElementById('correctAnswers').textContent = 
+            `${gameState.correctAnswers}/${gameState.totalQuestions}`;
+        document.getElementById('totalTime').textContent = `${totalTime}s`;
+        
+        // Determinar título baseado na performance
+        const percentage = (gameState.correctAnswers / gameState.totalQuestions) * 100;
+        let title = 'Parabéns!';
+        if (percentage >= 90) {
+            title = 'Excelente!';
+        } else if (percentage >= 70) {
+            title = 'Muito bom!';
+        } else if (percentage >= 50) {
+            title = 'Bom trabalho!';
+        } else {
+            title = 'Continue praticando!';
+        }
+        
+        document.getElementById('resultTitle').textContent = title;
+        showModal('resultModal');
     }
+}
+
+function showFeedbackScreen() {
+    // Ocultar todas as seções e mostrar tela de feedback
+    hideAllSections();
+    const feedbackScreen = document.getElementById('feedbackScreen');
+    if (feedbackScreen) {
+        feedbackScreen.style.display = 'block';
+
+        // Calcular estatísticas
+        const percentage = Math.round((gameState.correctAnswers / gameState.totalQuestions) * 100);
+        
+        // Determinar título e mensagem baseado na performance
+        let title = 'Parabéns!';
+        let subtitle = 'Você concluiu o desafio!';
+        let message = 'Continue praticando para melhorar ainda mais!';
+        
+        if (percentage >= 90) {
+            title = 'Excelente!';
+            subtitle = 'Performance excepcional!';
+            message = 'Você demonstrou um conhecimento impressionante! Continue assim!';
+        } else if (percentage >= 70) {
+            title = 'Muito bom!';
+            subtitle = 'Ótimo desempenho!';
+            message = 'Você está no caminho certo! Parabéns pelo bom resultado!';
+        } else if (percentage >= 50) {
+            title = 'Bom trabalho!';
+            subtitle = 'Você está progredindo!';
+            message = 'Continue estudando e você chegará lá! Cada tentativa é um aprendizado!';
+        } else {
+            title = 'Continue tentando!';
+            subtitle = 'Não desista!';
+            message = 'O aprendizado é um processo. Continue praticando e você verá a melhoria!';
+        }
+
+        // Atualizar elementos da tela
+        const titleElement = document.getElementById('feedbackTitle');
+        const subtitleElement = document.getElementById('feedbackSubtitle');
+        const scoreElement = document.getElementById('feedbackScore');
+        const correctElement = document.getElementById('feedbackCorrect');
+        const percentageElement = document.getElementById('feedbackPercentage');
+        const messageElement = document.getElementById('feedbackPerformanceMessage');
+
+        if (titleElement) titleElement.textContent = title;
+        if (subtitleElement) subtitleElement.textContent = subtitle;
+        if (scoreElement) scoreElement.textContent = gameState.score;
+        if (correctElement) correctElement.textContent = gameState.correctAnswers;
+        if (percentageElement) percentageElement.textContent = percentage + '%';
+        if (messageElement) messageElement.textContent = message;
+
+        // Gerar gabarito
+        generateGameResults();
+    }
+}
+
+function generateGameResults() {
+    const resultsContainer = document.getElementById('resultsContainer');
+    if (!resultsContainer) return;
     
-    document.getElementById('resultTitle').textContent = title;
-    showModal('resultModal');
+    resultsContainer.innerHTML = '';
+
+    gameState.userAnswers.forEach((answer, index) => {
+        const question = answer.question || questionsDatabase[gameState.difficulty][answer.questionIndex];
+        const resultItem = document.createElement('div');
+        resultItem.className = `result-item ${answer.isCorrect ? 'correct' : 'incorrect'}`;
+
+        const statusIcon = answer.isCorrect ? '✓' : '✗';
+        const statusClass = answer.isCorrect ? 'correct' : 'incorrect';
+
+        let userChoiceText = '';
+        if (answer.userChoice === -1) {
+            userChoiceText = 'Tempo esgotado';
+        } else {
+            userChoiceText = question.options[answer.userChoice];
+        }
+
+        resultItem.innerHTML = `
+            <div class="result-header">
+                <div class="result-status ${statusClass}">
+                    ${statusIcon}
+                </div>
+                <div class="result-question">
+                    ${index + 1}. ${question.question}
+                </div>
+            </div>
+            <div class="result-answers">
+                <div class="result-answer user-answer ${answer.isCorrect ? '' : 'incorrect'}">
+                    <div class="result-answer-letter">${answer.userChoice === -1 ? '⏰' : String.fromCharCode(65 + answer.userChoice)}</div>
+                    <div class="result-answer-text">
+                        <strong>Sua resposta:</strong> ${userChoiceText}
+                    </div>
+                </div>
+                <div class="result-answer correct-answer">
+                    <div class="result-answer-letter">${String.fromCharCode(65 + answer.correctChoice)}</div>
+                    <div class="result-answer-text">
+                        <strong>Resposta correta:</strong> ${question.options[answer.correctChoice]}
+                    </div>
+                </div>
+            </div>
+        `;
+
+        resultsContainer.appendChild(resultItem);
+    });
+}
+
+// Funções para os botões da tela de feedback
+function restartGame() {
+    showLevelSelection();
+}
+
+function backToMenu() {
+    showMainMenu();
 }
 
 // Jogar novamente
