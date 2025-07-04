@@ -2,9 +2,9 @@
 
 O PortGO é uma aplicação web educacional redesenhada para estudantes do ensino médio, transformando o aprendizado em uma experiência divertida e interativa através de jogos de perguntas e respostas.
 
-## 📋 Roteiro para o Redesenho do Aplicativo Educacional PortGO
+##  Roteiro para o Redesenho do Aplicativo Educacional PortGO
 
-### 🎯 Metodologia Utilizada
+###  Metodologia Utilizada
 
 Este projeto seguiu as **Fases do Processo Criativo de Vidal**, uma metodologia estruturada para redesign de interfaces:
 
@@ -18,7 +18,7 @@ Este projeto seguiu as **Fases do Processo Criativo de Vidal**, uma metodologia 
 
 ---
 
-## 1. 📊 Diagnóstico e Planejamento
+## 1.  Diagnóstico e Planejamento
 
 **Objetivo**: Compreender o uso atual, identificar problemas e oportunidades de melhoria.
 
@@ -55,7 +55,7 @@ PortGO Redesign
 
 ---
 
-## 2. 👥 Redefinição de Persona e Jornada do Usuário
+## 2.  Redefinição de Persona e Jornada do Usuário
 
 **Objetivo**: Reposicionar o PortGO com base em perfis atualizados de usuários.
 
@@ -94,7 +94,7 @@ PortGO Redesign
 
 ---
 
-## 3. 💡 Coleta de Requisitos e Ideação
+## 3.  Coleta de Requisitos e Ideação
 
 **Objetivo**: Formular funcionalidades e melhorias com base nas necessidades identificadas.
 
@@ -121,7 +121,7 @@ PortGO Redesign
 
 ---
 
-## 4. 📐 Protótipos de Baixa Fidelidade
+## 4.  Protótipos de Baixa Fidelidade
 
 **Objetivo**: Explorar soluções e testar o fluxo de navegação.
 
@@ -149,7 +149,7 @@ A pasta `wireframes/` contém todos os wireframes desenvolvidos:
 
 ---
 
-## 5. 🎨 Protótipos de Alta Fidelidade e Design de Interface
+## 5.  Protótipos de Alta Fidelidade e Design de Interface
 
 **Objetivo**: Elaborar o projeto gráfico e a experiência do usuário.
 
@@ -201,7 +201,7 @@ A pasta `wireframes/` contém todos os wireframes desenvolvidos:
 
 ---
 
-## 6. 🧪 Testes de Usabilidade
+## 6.  Testes de Usabilidade
 
 **Objetivo**: Validar a eficiência, eficácia e satisfação na interação com o protótipo.
 
@@ -237,20 +237,20 @@ A pasta `wireframes/` contém todos os wireframes desenvolvidos:
 - **Design visual**: 9.3/10
 
 ### Principais Achados
-✅ **Pontos Positivos**:
+ **Pontos Positivos**:
 - Interface intuitiva e atrativa
 - Feedback visual claro
 - Gamificação efetiva
 - Responsividade adequada
 
-⚠️ **Melhorias Identificadas**:
-- ✅ ~~Timer pode causar ansiedade~~ → **RESOLVIDO: Timer desabilitado**
-- ✅ ~~Explicações após erro~~ → **RESOLVIDO: Gabarito detalhado implementado**
+ **Melhorias Identificadas**:
+-  ~~Timer pode causar ansiedade~~ → **RESOLVIDO: Timer desabilitado**
+-  ~~Explicações após erro~~ → **RESOLVIDO: Gabarito detalhado implementado**
 - Questões muito similares (ampliar banco de dados)
 
 ---
 
-## 🚀 Tecnologias Utilizadas
+##  Tecnologias Utilizadas
 
 - **HTML5**: Estrutura semântica e acessível
 - **CSS3**: Estilos modernos com gradientes, animações e responsividade
@@ -258,7 +258,7 @@ A pasta `wireframes/` contém todos os wireframes desenvolvidos:
 - **Font Awesome**: Ícones vetoriais
 - **Google Fonts**: Tipografia Poppins
 
-## 📁 Estrutura do Projeto
+##  Estrutura do Projeto
 
 ```
 Portgo/
@@ -281,30 +281,30 @@ Portgo/
 └── README.md              # Documentação do projeto
 ```
 
-## 🎮 Funcionalidades Implementadas
+##  Funcionalidades Implementadas
 
 ### Página Inicial (index.html)
-- ✅ Landing page atrativa com preview do jogo
-- ✅ Modais de login e cadastro responsivos
-- ✅ Animações e efeitos visuais
-- ✅ Design mobile-first
+-  Landing page atrativa com preview do jogo
+-  Modais de login e cadastro responsivos
+-  Animações e efeitos visuais
+-  Design mobile-first
 
 ### Interface do Jogo (game.html)
-- ✅ Dashboard com estatísticas do usuário
-- ✅ Sistema de seleção de série (1º, 2º, 3º ano)
-- ✅ Três níveis de dificuldade
-- ✅ Interface de questões com **tempo ilimitado** (timer desabilitado)
-- ✅ Sistema de ajudas (Dica, Trocar, Cartas)
-- ✅ Feedback visual para respostas
-- ✅ **Tela de feedback completa** com gabarito detalhado
-- ✅ **Sistema de estatísticas** (pontos, acertos, porcentagem)
-- ✅ **Mensagens motivacionais** baseadas na performance
-- ✅ **Scroll duplo** (página e gabarito independentes)
-- ✅ Rankings de alunos e escolas
+-  Dashboard com estatísticas do usuário
+-  Sistema de seleção de série (1º, 2º, 3º ano)
+-  Três níveis de dificuldade
+-  Interface de questões com **tempo ilimitado** (timer desabilitado)
+-  Sistema de ajudas (Dica, Trocar, Cartas)
+-  Feedback visual para respostas
+-  **Tela de feedback completa** com gabarito detalhado
+-  **Sistema de estatísticas** (pontos, acertos, porcentagem)
+-  **Mensagens motivacionais** baseadas na performance
+-  **Scroll duplo** (página e gabarito independentes)
+-  Rankings de alunos e escolas
 
-## 🆕 Atualizações Recentes (Dezembro 2024)
+##  Atualizações Recentes (Dezembro 2024)
 
-### 🕐 Desabilitação do Timer
+###  Desabilitação do Timer
 - **Mudança**: Timer completamente desabilitado, oferecendo **tempo ilimitado**
 - **Motivo**: Reduzir ansiedade e permitir aprendizado mais reflexivo
 - **Implementação**: 
@@ -313,7 +313,7 @@ Portgo/
   - Pontuação sem bônus de tempo
   - Foco no aprendizado, não na velocidade
 
-### 🎨 Nova Tela de Feedback Completa
+###  Nova Tela de Feedback Completa
 - **Tela de feedback full-screen** substitui modal simples
 - **Gabarito detalhado** com todas as questões e respostas
 - **Estatísticas completas**:
@@ -326,7 +326,7 @@ Portgo/
   - 50-69%: "Bom trabalho! Você está progredindo!"
   - 0-49%: "Continue tentando! Não desista!"
 
-### 🎯 Melhorias de UX
+###  Melhorias de UX
 - **Scroll duplo funcional**:
   - Página inteira permite scroll quando necessário
   - Área de gabarito com scroll independente
@@ -337,14 +337,14 @@ Portgo/
   - Centralização perfeita em todas as telas
   - Compatibilidade mobile completa
 
-### 📋 Documentação Atualizada
+###  Documentação Atualizada
 - **Wireframe da tela de feedback**:
   - Localização: `wireframes/menu principal/game/feedback/`
   - Documenta toda a interface e comportamentos
   - Especifica estados visuais e funcionalidades
 - **Padrão de documentação** mantido consistente
 
-## 🎯 Como Usar o Sistema
+##  Como Usar o Sistema
 
 1. **Acesse** `index.html` no navegador
 2. **Faça login** usando os modais (campos opcionais para demonstração)
@@ -353,7 +353,7 @@ Portgo/
 5. **Responda** as 10 questões usando as ajudas quando necessário
 6. **Visualize** seu resultado e compare com outros jogadores
 
-## 📊 Sistema de Pontuação
+##  Sistema de Pontuação
 
 - **Fácil**: 10 pontos por acerto (tempo ilimitado)
 - **Médio**: 20 pontos por acerto (tempo ilimitado)  
@@ -361,7 +361,7 @@ Portgo/
 
 > **Nota**: Sistema de pontuação focado no aprendizado, sem pressão de tempo ou bônus temporal.
 
-## 🔮 Próximos Passos
+##  Próximos Passos
 
 1. **Implementação Backend**: Sistema de usuários e dados persistentes
 2. **Banco de Questões**: Expansão com mais matérias e dificuldades
@@ -369,7 +369,7 @@ Portgo/
 4. **Analytics**: Relatórios detalhados de performance
 5. **PWA**: Conversão para aplicativo instalável
 
-## 📈 Resultados do Redesenho
+##  Resultados do Redesenho
 
 ### Melhorias Alcançadas
 - **+156% engajamento** visual (feedback dos testes)
@@ -394,11 +394,3 @@ Portgo/
 - **UX Psychology**: Mensagens motivacionais baseadas em performance
 
 ---
-
-**PortGO** - Transformando educação em diversão através do design centrado no usuário! 🎓✨
-
-*Projeto desenvolvido seguindo metodologia acadêmica para redesign de aplicação educacional - UNIJUÍ 2025*
-
----
-
-📅 **Última atualização**: Dezembro 2024 - Implementação da tela de feedback completa e desabilitação do timer
