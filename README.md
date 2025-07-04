@@ -1,7 +1,7 @@
 # PortGO - Redesenho de Aplicativo Educacional
 ##### Guilherme Becker e Nathan Weirich
 
-O PortGO é uma aplicação web educacional redesenhada para estudantes do ensino médio, transformando o aprendizado em uma experiência divertida e interativa através de jogos de perguntas e respostas.
+O PortGO é uma aplicação web educacional pensada para estudantes do ensino médio, transformando o aprendizado em uma experiência divertida através de jogos de perguntas e respostas. Porém com interface ultrapassada e pouco interativa para os usuários, principalmente alunos de ensino médio.
 
 ##  Roteiro para o Redesenho do Aplicativo Educacional PortGO
 
@@ -76,7 +76,7 @@ PortGO Redesign
 - **Frustrações**: Perda de tempo, falta de desafios adequados
 - **Motivações**: Rankings, progressão visível
 
-### Terceira Persona: **Lucas - Estudante do 1º Ano**
+#### Terceira Persona: **Lucas - Estudante do 1º Ano**
 - **Idade**: 15 anos
 - **Perfil**: Estudante iniciante no ensino médio, curioso e explorador
 - **Objetivos**: Atingir boa base no conteúdo de português, entender melhor as matérias para os anos seguintes
