@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PortGO - Índice de Wireframes</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 20px; background: #f5f5f5; }
+        .nav { position: fixed; top: 0; left: 0; right: 0; background: #333; color: white; padding: 10px; z-index: 1000; }
+        .nav h1 { margin: 0; display: inline-block; }
+        .nav-links { float: right; }
+        .nav-links a { color: white; text-decoration: none; margin: 0 10px; }
+        .content { margin-top: 60px; }
+        .wireframe-section { margin: 30px 0; padding: 20px; background: white; border-radius: 10px; }
+        .wireframe { border: 2px solid #333; padding: 20px; background: #f9f9f9; margin: 20px 0; }
+        .section { margin: 10px 0; padding: 10px; border: 1px dashed #666; }
+        
+        /* Estilos específicos dos wireframes */
+        .header-layout { display: flex; justify-content: space-between; align-items: center; }
+        .logo-section { display: flex; align-items: center; gap: 15px; }
+        .user-section { display: flex; align-items: center; gap: 15px; }
+        .hero-layout { display: flex; gap: 20px; }
+        .game-preview { border: 2px solid #8B5CF6; padding: 15px; background: white; border-radius: 10px; }
+        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 15px 0; }
+        .menu-card { border: 2px solid #8B5CF6; padding: 15px; background: white; border-radius: 10px; text-align: center; }
+        .modal-preview { border: 2px solid #8B5CF6; padding: 15px; margin: 10px 0; background: white; border-radius: 10px; }
+        .input-group { display: flex; align-items: center; gap: 10px; margin: 8px 0; padding: 8px; background: #f9f9f9; border-radius: 5px; }
+        .btn-primary { background: #8B5CF6; color: white; padding: 10px 20px; border: none; border-radius: 5px; width: 100%; margin: 5px 0; }
+        .grades-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 10px 0; }
+        .grade-card { border: 1px solid #ddd; padding: 15px; background: #f9f9f9; border-radius: 8px; text-align: center; }
+        .first-year { border-left: 4px solid #22c55e; }
+        .second-year { border-left: 4px solid #f59e0b; }
+        .third-year { border-left: 4px solid #ef4444; }
+        .footer-layout { display: flex; justify-content: space-between; }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; padding-top: 10px; border-top: 1px solid #ccc; }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <h1>PortGO - Wireframes</h1>
+        <div class="nav-links">
+            <a href="#index">Página Index</a>
+            <a href="#menu-principal">Menu Principal</a>
+            <a href="#game">Área do Jogo</a>
+        </div>
+    </nav>
+
+    <div class="content">
+        <!-- SEÇÃO 1: PÁGINA INDEX -->
+        <section id="index" class="wireframe-section">
+            <h1>🏠 WIREFRAMES - PÁGINA INDEX</h1>
+            
+            <!-- Header Index -->
+            <div class="wireframe">
+                <h2>Header Index</h2>
+                <div class="section">
+                    <div class="header-layout">
+                        <div class="logo-section">
+                            <div style="width: 20px; height: 20px; background: #8B5CF6; border-radius: 50%;"></div>
+                            <h3>PortGO</h3>
+                            <p>(Logo com ícone de graduação)</p>
+                        </div>
+                        <div>
+                            <button style="background: #8B5CF6; color: white; padding: 8px 16px; border: none; border-radius: 5px;">
+                                🔑 Entrar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Index -->
+            <div class="wireframe">
+                <h2>Main - Hero Section</h2>
+                <div class="section">
+                    <div class="hero-layout">
+                        <div style="flex: 1;">
+                            <h3>Aprenda de forma <span style="background: linear-gradient(135deg, #8B5CF6, #EC4899); -webkit-background-clip: text; color: transparent;">divertida</span></h3>
+                            <p>Jogue, aprenda e compita com seus amigos em um ambiente gamificado!</p>
+                        </div>
+                        <div style="flex: 1;">
+                            <div class="game-preview">
+                                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                                    <div>🎮 PortGO Quiz</div>
+                                    <div>⏰ 30s</div>
+                                </div>
+                                <h4>Assinale a alternativa em que todas as palavras estão corretamente acentuadas:</h4>
+                                <div style="margin: 5px 0; padding: 5px; background: #f0f0f0; border-radius: 5px;">A) último, vírus, álcool, álbum</div>
+                                <div style="margin: 5px 0; padding: 5px; background: #90EE90; border-radius: 5px;">B) último, vírus, álcool, álbum</div>
+                                <div style="margin: 5px 0; padding: 5px; background: #f0f0f0; border-radius: 5px;">C) ultimo, virus, alcool, album</div>
+                                <div style="margin: 5px 0; padding: 5px; background: #f0f0f0; border-radius: 5px;">D) último, virus, álcool, album</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Login/Register Modals -->
+            <div class="wireframe">
+                <h2>Modais de Login/Registro</h2>
+                <div class="section">
+                    <div style="display: flex; gap: 20px;">
+                        <div class="modal-preview" style="flex: 1;">
+                            <h3>Modal de Login</h3>
+                            <div class="input-group">
+                                <span>📧</span>
+                                <span>Seu e-mail (opcional)</span>
+                            </div>
+                            <div class="input-group">
+                                <span>🔒</span>
+                                <span>Sua senha (opcional)</span>
+                            </div>
+                            <button class="btn-primary">🔑 Entrar</button>
+                        </div>
+                        <div class="modal-preview" style="flex: 1;">
+                            <h3>Modal de Registro</h3>
+                            <div class="input-group">
+                                <span>👤</span>
+                                <span>Nome completo</span>
+                            </div>
+                            <div class="input-group">
+                                <span>📧</span>
+                                <span>Seu e-mail</span>
+                            </div>
+                            <div class="input-group">
+                                <span>🎓</span>
+                                <span>Tipo de cadastro</span>
+                            </div>
+                            <button class="btn-primary">👤 Criar Conta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Index -->
+            <div class="wireframe">
+                <h2>Footer Index</h2>
+                <div class="section">
+                    <div class="footer-layout">
+                        <div>
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <div style="width: 30px; height: 30px; background: #8B5CF6; border-radius: 50%;"></div>
+                                <strong>PortGO</strong>
+                            </div>
+                            <p>Transformando educação em diversão</p>
+                        </div>
+                        <div>
+                            <h4>Contato</h4>
+                            <p>📧 contato@portgo.com.br</p>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <div>
+                            <p>© 2024 PortGO. Todos os direitos reservados.</p>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <div style="width: 40px; height: 40px; background: #ddd; border-radius: 5px;"></div>
+                            <span>UNIJUÍ</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: MENU PRINCIPAL -->
+        <section id="menu-principal" class="wireframe-section">
+            <h1>🎮 WIREFRAMES - MENU PRINCIPAL</h1>
+            
+            <!-- Header Game -->
+            <div class="wireframe">
+                <h2>Header do Jogo</h2>
+                <div class="section">
+                    <div class="header-layout">
+                        <div class="logo-section">
+                            <div style="width: 40px; height: 30px; background: #ddd; border-radius: 5px;"></div>
+                            <h3>PortGO</h3>
+                        </div>
+                        <div class="user-section">
+                            <div style="width: 40px; height: 40px; background: #8B5CF6; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">👤</div>
+                            <div>
+                                <div><strong>João Silva</strong></div>
+                                <div><small>Nível 5</small></div>
+                            </div>
+                            <div style="background: #e0e7ff; padding: 5px 10px; border-radius: 15px;">⭐ 1,250 pts</div>
+                            <div style="background: #e0e7ff; padding: 5px 10px; border-radius: 15px;">🏆 15º lugar</div>
+                            <button style="background: #ef4444; color: white; border: none; padding: 8px; border-radius: 5px;">🚪</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Menu -->
+            <div class="wireframe">
+                <h2>Menu Principal</h2>
+                <div class="section">
+                    <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #e0e7ff, #f3e8ff); border-radius: 10px; margin-bottom: 20px;">
+                        <h3>Bem-vindo de volta, João!</h3>
+                        <p>Pronto para mais uma aventura educacional?</p>
+                    </div>
+                    <div class="menu-grid">
+                        <div class="menu-card">
+                            <div style="font-size: 2em;">▶️</div>
+                            <h3>Novo Jogo</h3>
+                            <p>Inicie uma nova partida</p>
+                            <div>⚡ Energia: 5/5</div>
+                        </div>
+                        <div class="menu-card">
+                            <div style="font-size: 2em;">🎓</div>
+                            <h3>Ranking Aluno</h3>
+                            <p>Sua posição</p>
+                            <div>🏅 15º Posição</div>
+                        </div>
+                        <div class="menu-card">
+                            <div style="font-size: 2em;">🏫</div>
+                            <h3>Ranking Escola</h3>
+                            <p>Compare escolas</p>
+                            <div>🏆 3º Lugar</div>
+                        </div>
+                        <div class="menu-card">
+                            <div style="font-size: 2em;">📖</div>
+                            <h3>Regras</h3>
+                            <p>Como jogar</p>
+                            <div>ℹ️ Guia Completo</div>
+                        </div>
+                        <div class="menu-card">
+                            <div style="font-size: 2em;">🏆</div>
+                            <h3>Conquistas</h3>
+                            <p>Seus badges</p>
+                            <div>⭐ 8/15 Badges</div>
+                        </div>
+                        <div class="menu-card">
+                            <div style="font-size: 2em;">⚙️</div>
+                            <h3>Perfil</h3>
+                            <p>Configurações</p>
+                            <div>✏️ Editar Dados</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- New Game Flow -->
+            <div class="wireframe">
+                <h2>Fluxo de Novo Jogo</h2>
+                <div class="section">
+                    <h3>Seleção de Série</h3>
+                    <div class="grades-grid">
+                        <div class="grade-card first-year">
+                            <div style="font-size: 2em;">🎓</div>
+                            <h4>1º Ano</h4>
+                            <p>Fundamentos</p>
+                        </div>
+                        <div class="grade-card second-year">
+                            <div style="font-size: 2em;">🎓</div>
+                            <h4>2º Ano</h4>
+                            <p>Intermediário</p>
+                        </div>
+                        <div class="grade-card third-year">
+                            <div style="font-size: 2em;">🏆</div>
+                            <h4>3º Ano</h4>
+                            <p>Vestibular</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <h3>Seleção de Nível</h3>
+                    <div class="grades-grid">
+                        <div class="grade-card first-year">
+                            <div style="font-size: 2em;">🌱</div>
+                            <h4>Fácil</h4>
+                            <p>+10 pontos</p>
+                        </div>
+                        <div class="grade-card second-year">
+                            <div style="font-size: 2em;">🔥</div>
+                            <h4>Médio</h4>
+                            <p>+20 pontos</p>
+                        </div>
+                        <div class="grade-card third-year">
+                            <div style="font-size: 2em;">👑</div>
+                            <h4>Difícil</h4>
+                            <p>+30 pontos</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: ÁREA DO JOGO -->
+        <section id="game" class="wireframe-section">
+            <h1>🎯 WIREFRAMES - ÁREA DO JOGO</h1>
+            
+            <!-- Game Questions -->
+            <div class="wireframe">
+                <h2>Interface de Questões</h2>
+                <div class="section">
+                    <div style="display: flex; justify-content: space-between; align-items: center; padding: 15px; background: #f8fafc; border-radius: 8px; margin-bottom: 20px;">
+                        <div>
+                            <div><strong>Questão 3 de 10</strong></div>
+                            <div style="width: 200px; height: 8px; background: #e2e8f0; border-radius: 4px; margin-top: 5px;">
+                                <div style="height: 100%; background: #8B5CF6; width: 30%; border-radius: 4px;"></div>
+                            </div>
+                        </div>
+                        <div>⏰ 25s</div>
+                        <div>⭐ 40 pts</div>
+                    </div>
+                    
+                    <div style="background: white; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
+                        <div style="background: #eff6ff; padding: 10px; border-radius: 6px; margin-bottom: 15px;">
+                            <strong>Texto de Apoio:</strong> Leia o trecho a seguir...
+                        </div>
+                        <h3>Assinale a alternativa em que todas as palavras estão corretamente acentuadas:</h3>
+                        
+                        <div style="margin: 10px 0; padding: 15px; border: 2px solid #e2e8f0; border-radius: 8px; display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 30px; height: 30px; background: #8B5CF6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">A</div>
+                            <span>último, vírus, álcool, álbum</span>
+                        </div>
+                        <div style="margin: 10px 0; padding: 15px; border: 2px solid #22c55e; background: #f0fdf4; border-radius: 8px; display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 30px; height: 30px; background: #8B5CF6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">B</div>
+                            <span>último, vírus, álcool, álbum</span>
+                        </div>
+                        <div style="margin: 10px 0; padding: 15px; border: 2px solid #e2e8f0; border-radius: 8px; display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 30px; height: 30px; background: #8B5CF6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">C</div>
+                            <span>ultimo, virus, alcool, album</span>
+                        </div>
+                        <div style="margin: 10px 0; padding: 15px; border: 2px solid #ef4444; background: #fef2f2; border-radius: 8px; display: flex; align-items: center; gap: 15px;">
+                            <div style="width: 30px; height: 30px; background: #8B5CF6; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">D</div>
+                            <span>último, virus, álcool, album</span>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                        <button style="padding: 10px 15px; background: #fbbf24; color: white; border: none; border-radius: 8px;">💡 Dica (2)</button>
+                        <button style="padding: 10px 15px; background: #06b6d4; color: white; border: none; border-radius: 8px;">🔄 Trocar (1)</button>
+                        <button style="padding: 10px 15px; background: #8b5cf6; color: white; border: none; border-radius: 8px;">📚 Cartas (1)</button>
+                        <button style="padding: 10px 15px; background: #dc2626; color: white; border: none; border-radius: 8px;">🏁 Encerrar</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback Screen -->
+            <div class="wireframe">
+                <h2>Tela de Feedback</h2>
+                <div class="section">
+                    <div style="text-align: center; padding: 20px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border-radius: 10px; margin-bottom: 20px;">
+                        <h2>🎉 Parabéns!</h2>
+                        <p>Você completou o quiz com sucesso!</p>
+                        <div style="background: rgba(255,255,255,0.2); border-radius: 8px; padding: 15px; margin: 15px 0;">
+                            <strong>Muito bom! Ótimo desempenho!</strong>
+                        </div>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 20px 0;">
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; text-align: center;">
+                            <div style="font-size: 2em; font-weight: bold; color: #667eea;">85</div>
+                            <div style="color: #64748b;">Pontos</div>
+                        </div>
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; text-align: center;">
+                            <div style="font-size: 2em; font-weight: bold; color: #667eea;">8/10</div>
+                            <div style="color: #64748b;">Acertos</div>
+                        </div>
+                        <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px; text-align: center;">
+                            <div style="font-size: 2em; font-weight: bold; color: #667eea;">80%</div>
+                            <div style="color: #64748b;">Aproveitamento</div>
+                        </div>
+                    </div>
+                    
+                    <div style="max-height: 200px; overflow-y: auto; border: 1px solid #e2e8f0; border-radius: 8px; padding: 15px;">
+                        <div style="display: flex; align-items: center; gap: 15px; padding: 10px; background: #f0fdf4; border-left: 4px solid #22c55e; border-radius: 6px; margin: 8px 0;">
+                            <div style="width: 30px; height: 30px; background: #667eea; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">1</div>
+                            <div style="flex: 1;">
+                                <strong>Questão sobre acentuação...</strong>
+                                <div style="font-size: 0.8em;">✅ Sua resposta: A | Correta: A</div>
+                            </div>
+                            <div>✅</div>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 15px; padding: 10px; background: #fef2f2; border-left: 4px solid #ef4444; border-radius: 6px; margin: 8px 0;">
+                            <div style="width: 30px; height: 30px; background: #667eea; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center;">2</div>
+                            <div style="flex: 1;">
+                                <strong>Questão sobre gramática...</strong>
+                                <div style="font-size: 0.8em;">❌ Sua resposta: B | Correta: C</div>
+                            </div>
+                            <div>❌</div>
+                        </div>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; justify-content: center; margin-top: 20px;">
+                        <button style="padding: 12px 24px; background: #667eea; color: white; border: none; border-radius: 8px;">🔄 Jogar Novamente</button>
+                        <button style="padding: 12px 24px; background: #64748b; color: white; border: none; border-radius: 8px;">🏠 Voltar ao Menu</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Game Options -->
+            <div class="wireframe">
+                <h2>Opções do Jogo</h2>
+                <div class="section">
+                    <h3>Configurações Básicas</h3>
+                    <p>[ Som Ativado/Desativado ]</p>
+                    <p>[ Música de Fundo ]</p>
+                    <p>[ Tempo por Pergunta ]</p>
+                    <p>[ Número de Vidas ]</p>
+                </div>
+                <div class="section">
+                    <h3>Configurações Avançadas</h3>
+                    <p>[ Modo Clássico ] [ Modo Rápido ] [ Modo Desafio ]</p>
+                    <p>[ Tema Escuro/Claro ]</p>
+                    <p>[ Tamanho da Fonte ]</p>
+                </div>
+            </div>
+
+            <!-- Rankings -->
+            <div class="wireframe">
+                <h2>Rankings</h2>
+                <div class="section">
+                    <h3>Classificação Geral</h3>
+                    <p>1. João Silva - 2,850 pts</p>
+                    <p>2. Maria Santos - 2,720 pts</p>
+                    <p>3. Pedro Costa - 2,680 pts</p>
+                    <p>...</p>
+                    <p><strong>Você está em 15º lugar</strong></p>
+                </div>
+            </div>
+
+            <!-- Regras -->
+            <div class="wireframe">
+                <h2>Regras do Jogo</h2>
+                <div class="section">
+                    <h3>Como Jogar</h3>
+                    <ul>
+                        <li>Responda 10 questões de múltipla escolha</li>
+                        <li>Cada questão tem tempo limitado</li>
+                        <li>Use ajudas com sabedoria</li>
+                    </ul>
+                </div>
+                <div class="section">
+                    <h3>Sistema de Pontuação</h3>
+                    <ul>
+                        <li>Fácil: 10 pontos por acerto</li>
+                        <li>Médio: 20 pontos por acerto</li>
+                        <li>Difícil: 30 pontos por acerto</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html> 
