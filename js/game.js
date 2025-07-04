@@ -3,7 +3,7 @@ let gameState = {
     currentQuestion: 0,
     score: 0,
     totalQuestions: 10,
-    timeLeft: 30,
+    timeLeft: 999999, // Timer desabilitado - tempo infinito
     timer: null,
     difficulty: 'easy',
     correctAnswers: 0,
@@ -240,7 +240,7 @@ function startGame(difficulty) {
         currentQuestion: 0,
         score: 0,
         totalQuestions: 5,
-        timeLeft: difficultySettings[difficulty].timeLimit,
+        timeLeft: 999999, // Timer desabilitado - tempo infinito
         timer: null,
         difficulty: difficulty,
         correctAnswers: 0,
@@ -253,7 +253,7 @@ function startGame(difficulty) {
     document.getElementById('gameArea').style.display = 'block';
     
     loadQuestion();
-    startTimer();
+    // startTimer(); // Timer desabilitado
     updateGameInfo();
 }
 
@@ -285,8 +285,8 @@ function loadQuestion() {
     document.querySelector('.question-counter').textContent = 
         `Questão ${gameState.currentQuestion + 1} de ${gameState.totalQuestions}`;
 
-    // Reset timer
-    gameState.timeLeft = difficultySettings[gameState.difficulty].timeLimit;
+    // Timer desabilitado - não resetar tempo
+    gameState.timeLeft = 999999; // Tempo infinito
     updateTimer();
 }
 
@@ -294,8 +294,8 @@ function loadQuestion() {
 function selectAnswer(selectedIndex) {
     if (gameState.isPaused) return;
 
-    // Parar o timer imediatamente
-    clearInterval(gameState.timer);
+    // Timer desabilitado - não há timer para parar
+    // clearInterval(gameState.timer);
     
     const questions = questionsDatabase[gameState.difficulty];
     const question = questions[gameState.currentQuestion];
@@ -314,7 +314,7 @@ function selectAnswer(selectedIndex) {
         // Resposta correta
         gameState.correctAnswers++;
         const points = difficultySettings[gameState.difficulty].pointsPerQuestion;
-        const timeBonus = Math.floor(gameState.timeLeft / 2);
+        const timeBonus = 0; // Não há bônus de tempo quando o timer está desabilitado
         gameState.score += points + timeBonus;
         
         // Vibração de sucesso no mobile
@@ -322,7 +322,7 @@ function selectAnswer(selectedIndex) {
             window.vibrateOnAnswer(true);
         }
         
-        showFeedback(true, points + timeBonus);
+        showFeedback(true, points, 'Correto! +' + points + ' pontos');
     } else {
         // Resposta incorreta
         // Vibração de erro no mobile
@@ -355,81 +355,37 @@ function selectAnswer(selectedIndex) {
             }
             
             loadQuestion();
-            startTimer();
+            // startTimer(); // Timer desabilitado
         }, 1500);
         
     }, 300);
 }
 
-// Timer
+// Timer (DESABILITADO)
 function startTimer() {
-    gameState.timer = setInterval(() => {
-        if (!gameState.isPaused) {
-            gameState.timeLeft--;
-            updateTimer();
-            
-            if (gameState.timeLeft <= 0) {
-                timeUp();
-            }
-        }
-    }, 1000);
+    // Timer desabilitado - não faz nada
+    console.log('Timer desabilitado');
 }
 
 function updateTimer() {
     const timerElement = document.getElementById('timer');
     const gameTimerElement = document.querySelector('.game-timer');
     
-    // Atualizar texto do timer
-    timerElement.textContent = gameState.timeLeft;
+    // Timer desabilitado - ocultar elementos visuais
+    if (timerElement) {
+        timerElement.textContent = '∞'; // Mostrar infinito
+    }
     
-    // Feedback visual baseado no tempo restante
-    if (gameState.timeLeft <= 5) {
-        gameTimerElement.style.color = '#ef4444';
-        gameTimerElement.style.animation = 'pulse 0.5s infinite';
-        gameTimerElement.style.fontWeight = '700';
-    } else if (gameState.timeLeft <= 10) {
-        gameTimerElement.style.color = '#f59e0b';
-        gameTimerElement.style.animation = 'none';
-        gameTimerElement.style.fontWeight = '600';
-    } else {
-        gameTimerElement.style.color = '#ef4444';
+    if (gameTimerElement) {
+        gameTimerElement.style.color = '#10b981'; // Verde para indicar sem limite
         gameTimerElement.style.animation = 'none';
         gameTimerElement.style.fontWeight = '600';
     }
 }
 
 function timeUp() {
-    clearInterval(gameState.timer);
-    
-    // Mostrar resposta correta
-    const questions = questionsDatabase[gameState.difficulty];
-    const question = questions[gameState.currentQuestion];
-    const options = document.querySelectorAll('.option');
-    
-    // Desabilitar todas as opções
-    options.forEach(option => {
-        option.style.pointerEvents = 'none';
-    });
-    
-    // Mostrar resposta correta
-    options[question.correct].classList.add('correct');
-    showFeedback(false, 0, 'Tempo esgotado!');
-    
-    // Atualizar informações imediatamente
-    updateGameInfo();
-    
-    setTimeout(() => {
-        gameState.currentQuestion++;
-        
-        // Verificar se ainda há questões
-        if (gameState.currentQuestion >= gameState.totalQuestions) {
-            endGame();
-            return;
-        }
-        
-        loadQuestion();
-        startTimer();
-    }, 1500);
+    // Função timeUp desabilitada - não executa mais
+    console.log('Função timeUp desabilitada - Timer não está ativo');
 }
 
 // Atualizar informações do jogo
@@ -518,7 +474,8 @@ function showFeedback(isCorrect, points, customMessage = null) {
 
 // Finalizar jogo
 function endGame() {
-    clearInterval(gameState.timer);
+    // Timer desabilitado - não há timer para parar
+    // clearInterval(gameState.timer);
     
     const totalTime = Math.floor((Date.now() - gameState.gameStartTime) / 1000);
     

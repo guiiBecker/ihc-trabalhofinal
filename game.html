@@ -268,9 +268,9 @@
                         <div class="progress-fill" style="width: 10%"></div>
                     </div>
                 </div>
-                <div class="game-timer">
+                <div class="game-timer" style="display: none;">
                     <i class="fas fa-clock"></i>
-                    <span id="timer">30</span>s
+                    <span id="timer">∞</span>
                 </div>
                 <div class="game-score">
                     <i class="fas fa-star"></i>
@@ -523,11 +523,12 @@
             const progress = ((currentQuestion + 1) / totalQuestions) * 100;
             document.querySelector('.progress-fill').style.width = `${progress}%`;
 
-            startTimer();
+            // startTimer(); // Timer desabilitado
         }
 
         function selectOption(selectedIndex) {
-            clearInterval(timer);
+            // Timer desabilitado - não há timer para parar
+            // clearInterval(timer);
             const question = gameQuestions[currentQuestion];
             const options = document.querySelectorAll('.option');
             
@@ -575,19 +576,10 @@
         }
 
         function startTimer() {
-            timeLeft = gameLevel === 'easy' ? 30 : gameLevel === 'medium' ? 20 : 15;
-            document.getElementById('timer').textContent = timeLeft;
-            
-            clearInterval(timer);
-            timer = setInterval(() => {
-                timeLeft--;
-                document.getElementById('timer').textContent = timeLeft;
-                
-                if (timeLeft <= 0) {
-                    clearInterval(timer);
-                    selectOption(-1);
-                }
-            }, 1000);
+            // Timer desabilitado - não faz nada
+            timeLeft = 999999; // Tempo infinito
+            document.getElementById('timer').textContent = '∞';
+            console.log('Timer desabilitado no game.html');
         }
 
         function endGame() {
@@ -664,7 +656,8 @@
                 // Substitui a questão atual
                 gameQuestions[currentQuestion] = newQuestion;
                 
-                clearInterval(timer);
+                // Timer desabilitado - não há timer para parar
+                // clearInterval(timer);
                 loadQuestion();
             } else {
                 alert('Não há mais questões disponíveis para trocar!');
@@ -722,9 +715,9 @@
         }
 
         function pauseGame() {
-            clearInterval(timer);
+            // Timer desabilitado - pausar apenas mostra mensagem
             alert('Jogo pausado! Clique em OK para continuar.');
-            startTimer();
+            // startTimer(); // Timer desabilitado
         }
 
         function showMainMenu() {
